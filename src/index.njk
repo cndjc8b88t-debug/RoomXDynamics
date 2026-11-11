@@ -1,0 +1,76 @@
+---
+layout: base.njk
+description: "RoomXDynamics shows a slice through a room: how warm and cool air move in the model, how the window shifts the felt-temperature trend and how cool the wall surface gets. A qualitative simulation for iPhone, in development."
+---
+
+<h1>See room climate in section.</h1>
+
+<p class="lead">RoomXDynamics is a simulation for iPhone. It shows a slice through a room with an outside wall and a window, in three views: how warm and cool air move through the room, how the window shifts the felt-temperature trend at a fixed spot, and how cool the wall surface gets. Everything happens in the model. The results are tendencies, not values for your room.</p>
+
+<div class="cards" id="cards">
+    <section class="card" data-card="felt">
+        <h2>Window and felt temperature</h2>
+        <ul>
+            <li>Why 21 °C can feel cold</li>
+            <li>How much better glazing changes that</li>
+        </ul>
+        <p class="muted">In development</p>
+        <span class="badge">Qualitative simulation · felt-temperature trend · not a measurement · not an expert report</span>
+    </section>
+    <section class="card" data-card="air">
+        <h2>Air in the room</h2>
+        <ul>
+            <li>How a radiator sets the room air moving</li>
+            <li>How warm and cool air circulate in a room slice</li>
+        </ul>
+        <span class="badge">2D section · qualitative · no comfort rating</span>
+    </section>
+    <section class="card" data-card="mould">
+        <h2>Cool walls and mould</h2>
+        <ul>
+            <li>Where walls get critically cool in the model</li>
+            <li>Behind a wardrobe: does the wall get cooler in the model?</li>
+        </ul>
+        <p class="muted">In development</p>
+        <span class="badge">Qualitative simulation – not a measurement, not an expert report</span>
+    </section>
+</div>
+<script>
+// Random order of the three equal-ranked cards on each visit (RX-F24, one card per view).
+// No cookie, no storage, nothing is sent.
+(function () {
+    var c = document.getElementById("cards");
+    if (!c) { return; }
+    var k = Array.prototype.slice.call(c.children);
+    for (var i = k.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = k[i]; k[i] = k[j]; k[j] = t;
+    }
+    k.forEach(function (e) { c.appendChild(e); });
+})();
+</script>
+
+<div class="cta-row">
+    <a class="cta cta-primary" href="/waitlist/">Join the waitlist</a>
+</div>
+<p class="store-note">RoomXDynamics is in development and not yet available.</p>
+
+<h2>What you see</h2>
+
+<p>Each view is a slice through a room with an outside wall and a window. You change a few inputs and watch how the picture shifts in the model.</p>
+
+<ul>
+    <li><strong>Air in the room.</strong> A radiator below the window. Colors show which air is cooler or warmer than the average room air, markers show how the air moves. You choose the window, the wall, the radiator setting and the outside temperature.</li>
+    <li><strong>Window and felt temperature.</strong> A felt-temperature trend at a fixed spot in the room, for different windows. No radiator is included. In development.</li>
+    <li><strong>Cool walls and mould.</strong> The temperature of the inner wall surface and a risk estimate in three levels, with a range. You enter the outdoor temperature, the room temperature, the humidity in the room and a wall template. In development.</li>
+</ul>
+
+<h2>What it is, and what it is not</h2>
+
+<p>The app calculates wall temperatures as steady-state heat conduction with common boundary conditions, based on common design values, not checked against standard texts. The air movement is a simplified two-dimensional picture and qualitative only. Every view carries a badge that says which simplifications apply. The details are on the <a href="/method/">method</a> page.</p>
+
+<p class="notice">If you can see mould: consult a qualified building surveyor.</p>
+
+<hr>
+
+<p class="muted">From the makers of FlatSixDynamics and MachXDynamics.</p>

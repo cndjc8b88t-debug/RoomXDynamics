@@ -1,0 +1,55 @@
+---
+layout: base.njk
+title: "How it works"
+permalink: /method/
+description: "How RoomXDynamics calculates: inputs, a 2D section, a result as a tendency. With the limits of the model and where the values come from."
+---
+
+<h1>How it works</h1>
+
+<p class="lead">Inputs, a section through the room, a result as a tendency. This page explains what is calculated, what is assumed and where the model stops.</p>
+
+<h2>1. Inputs</h2>
+
+<p>You enter the outdoor temperature, the room temperature, the relative humidity in the room and a wall template (for example an uninsulated or an insulated outside wall). You also place a window, a radiator and furniture at fixed positions in the section.</p>
+
+<h2>2. The 2D section</h2>
+
+<p>The app calculates two things, separately:</p>
+
+<ul>
+    <li><strong>Wall surfaces.</strong> The temperature of the wall surface comes from steady-state heat conduction through the wall, calculated as a case with common boundary conditions. Behind furniture, a higher surface resistance is assumed, because less warm air reaches the wall there.</li>
+    <li><strong>Air in the room.</strong> The air movement, such as the circulation above the radiator or cool air sinking at the window, is a simplified two-dimensional picture. Real room air is three-dimensional and turbulent. This layer therefore shows mechanisms, not numbers.</li>
+</ul>
+
+<p>The perceived temperature at two fixed positions in the room is a tendency derived from the air temperature and the temperatures of the surrounding surfaces, with simplified radiation.</p>
+
+<h2>3. The result</h2>
+
+<p>For the wall surface, the app shows a risk assessment in three levels with a range, based on common design values, not checked against standard texts. It shows where the wall gets critically cool in the model. It does not say whether mould will grow on a real wall, or why.</p>
+
+<h2>Where the values come from</h2>
+
+<p>Every number in the app is labelled:</p>
+
+<ul>
+    <li><strong>calculated</strong> – a result of the simulation from your inputs,</li>
+    <li><strong>common assumption</strong> – a widely used design value, for example for heat transfer at surfaces,</li>
+    <li><strong>team assumption</strong> – a value we have set as long as no reliable source is available. The app says so.</li>
+</ul>
+
+<h2>Limits</h2>
+
+<ul>
+    <li>Two dimensions instead of three. Corners, roller shutter boxes and junctions in the room are missing.</li>
+    <li>Steady state: no daily cycle, no ventilation, no heat storage in the wall.</li>
+    <li>The wall is a template, not the real build-up of a particular house.</li>
+    <li>The air movement is qualitative. The app does not derive statements about draughts in a real room from it.</li>
+    <li>The app does not replace an on-site measurement or an expert report.</li>
+</ul>
+
+<p class="notice">If you can see mould: consult a qualified building surveyor.</p>
+
+<div class="cta-row">
+    <a class="cta cta-primary" href="/waitlist/">Join the waitlist</a>
+</div>

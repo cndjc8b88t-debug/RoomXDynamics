@@ -1,0 +1,19 @@
+---
+# Old paths -> English pages (site is English only).
+# /impressum/ is gone; it now redirects to /imprint/.
+# The query string (?q=...) is carried over.
+pagination:
+  data: moved
+  size: 1
+  alias: r
+moved:
+  - { from: "/methode/", to: "/method/" }
+  - { from: "/warteliste/", to: "/waitlist/" }
+  - { from: "/datenschutz/", to: "/privacy/" }
+  - { from: "/impressum/", to: "/imprint/" }
+permalink: "{{ r.from }}index.html"
+layout: redirect.njk
+eleventyComputed:
+  redirectTo: "{{ r.to }}"
+eleventyExcludeFromCollections: true
+---

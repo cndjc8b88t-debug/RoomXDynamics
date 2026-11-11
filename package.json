@@ -1,0 +1,15 @@
+{
+  "name": "roomxdynamics-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Website for RoomXDynamics. Eleventy + GitHub Pages, no JS framework, no tracker.",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve --port=8083",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

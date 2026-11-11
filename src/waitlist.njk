@@ -1,0 +1,74 @@
+---
+layout: base.njk
+title: "Waitlist"
+permalink: /waitlist/
+description: "Waitlist for RoomXDynamics: a short email with your price estimate. Non-binding, no pre-order, price not set."
+---
+
+{% set mailBase = "mailto:" + site.contactEmail + "?subject=" %}
+{% set bodyText = "Audience: not specified\r\nSource: direct\r\n\r\nPlease notify me once when RoomXDynamics is available or the project is discontinued." %}
+{% set bodyDefault = bodyText | urlencode %}
+
+<h1>Join the waitlist</h1>
+
+<p class="lead">RoomXDynamics is in development. If you would like to be notified when the app is available, send us a short email. Clicking a price opens your email app with a pre-filled message. All you have to do is send it.</p>
+
+<div class="waitlist">
+
+<fieldset>
+    <legend>What describes you best? (optional)</legend>
+    <label><input type="radio" name="segment" value="Renter"> Renter</label>
+    <label><input type="radio" name="segment" value="Homeowner or renovator"> Homeowner or renovator</label>
+    <label><input type="radio" name="segment" value="Institution"> Institution</label>
+    <label><input type="radio" name="segment" value="Technical professional"> Technical professional</label>
+    <label><input type="radio" name="segment" value="not specified"> Prefer not to say</label>
+    <p class="hint">Your choice only ends up in the text of the email. Without JavaScript it says “not specified”; you can change the line yourself before sending.</p>
+</fieldset>
+
+<fieldset>
+    <legend>What would you pay for the app?</legend>
+    <p class="hint">One-time price, estimate, in euros. <strong>Non-binding, no pre-order, price not set.</strong> No purchase, no payment. The price has not been decided yet.</p>
+    <div class="cta-row price-row">
+        <a class="cta price" data-price="€4.99" href="{{ mailBase }}{{ "RoomXDynamics waitlist – €4.99" | urlencode }}&amp;body={{ bodyDefault }}">€4.99</a>
+        <a class="cta price" data-price="€9.99" href="{{ mailBase }}{{ "RoomXDynamics waitlist – €9.99" | urlencode }}&amp;body={{ bodyDefault }}">€9.99</a>
+        <a class="cta price" data-price="€19.99" href="{{ mailBase }}{{ "RoomXDynamics waitlist – €19.99" | urlencode }}&amp;body={{ bodyDefault }}">€19.99</a>
+        <a class="cta price" data-price="would not pay" href="{{ mailBase }}{{ "RoomXDynamics waitlist – would not pay" | urlencode }}&amp;body={{ bodyDefault }}">I would not pay</a>
+    </div>
+    <p class="hint">No email app set up? Write to <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a> with the subject “RoomXDynamics waitlist – €9.99” (or your price).</p>
+</fieldset>
+
+<div class="notice">
+    <p><strong>About your consent.</strong> By sending the email, you consent to us storing your email address together with your price estimate and the optional details (audience, source) in order to notify you <strong>once</strong> when RoomXDynamics is available or the project is discontinued. We only evaluate the price estimates in aggregate. No newsletter, no advertising. You can withdraw your consent at any time by emailing <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>. Details are in the <a href="/privacy/">Privacy Policy</a>.</p>
+</div>
+
+</div>
+
+<noscript><p class="hint">Without JavaScript, the emails contain “Audience: not specified” and “Source: direct”. You can change both before sending.</p></noscript>
+
+<script>
+// Builds the mailto links with audience and source (?q=... from the link).
+// No cookie, no storage, no request to a server. Nothing is sent until you
+// send the email from your own email app.
+(function () {
+    var to = {{ site.contactEmail | dump | safe }};
+    var q = new URLSearchParams(location.search).get("q") || "direct";
+    q = q.replace(/[^a-z0-9_-]/gi, "").slice(0, 32) || "direct";
+    function segment() {
+        var s = document.querySelector('input[name="segment"]:checked');
+        return s ? s.value : "not specified";
+    }
+    function update() {
+        var links = document.querySelectorAll("a.price");
+        for (var i = 0; i < links.length; i++) {
+            var p = links[i].getAttribute("data-price");
+            var subject = "RoomXDynamics waitlist – " + p;
+            var body = "Audience: " + segment() + "\r\nSource: " + q +
+                "\r\n\r\nPlease notify me once when RoomXDynamics is available or the project is discontinued.";
+            links[i].href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        }
+    }
+    var radios = document.querySelectorAll('input[name="segment"]');
+    for (var j = 0; j < radios.length; j++) { radios[j].addEventListener("change", update); }
+    update();
+})();
+</script>

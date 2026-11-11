@@ -1,0 +1,319 @@
+/* RoomXDynamics: calm typography, same scaffold as MachXDynamics.
+   No CSS framework, no web fonts from third-party servers, no JS.
+   System font stacks only; no externally loaded fonts. */
+
+/* Colours: app palette D1 v1 (shared with the app).
+   Nearly achromatic UI: in RoomXDynamics colour means air, so the lens colours
+   (slate blue, coral) stay reserved for data and never appear here.
+   --accent is a function colour (focus ring only): no fill, no text, no link. */
+:root {
+    color-scheme: light dark;
+    --paper:    #f6f3ed;   /* rx.surface.base */
+    --card:     #fffdf9;   /* rx.surface.raised */
+    --sunken:   #ece7de;   /* rx.surface.sunken: draft banner, placeholders */
+    --selected: #3d3933;   /* rx.surface.selected: hover fill of dark buttons */
+    --ink:      #23201c;   /* rx.text.primary */
+    --muted:    #5c554c;   /* rx.text.secondary */
+    --on-selected: #fffdf9;/* rx.text.onSelected */
+    --control:  #8a8176;   /* rx.line.control: edges of inputs, >= 3:1 */
+    --rule:     #dcd5c9;   /* rx.line.hairline: dividers, decorative */
+    --accent:   #6a4f2e;   /* rx.accent.focus: focus ring outside, 2px gap */
+
+    --measure: 38rem;
+    --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --paper:    #1b1916;
+        --card:     #25221e;
+        --sunken:   #2f2b26;
+        --selected: #ece5d9;
+        --ink:      #f3efe8;
+        --muted:    #b9b1a5;
+        --on-selected: #1b1916;
+        --control:  #857c71;
+        --rule:     #3a362f;
+        --accent:   #d9b98c;
+    }
+}
+
+/* Increased contrast (system setting): hellKontrast / dunkelKontrast */
+@media (prefers-contrast: more) {
+    :root {
+        --paper:    #f6f3ed;
+        --card:     #ffffff;
+        --sunken:   #e6e0d5;
+        --selected: #24211d;
+        --ink:      #000000;
+        --muted:    #3f3a33;
+        --on-selected: #ffffff;
+        --control:  #5c554c;
+        --rule:     #b9b1a5;
+        --accent:   #4a3418;
+    }
+}
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+    :root {
+        --paper:    #121110;
+        --card:     #1e1c19;
+        --sunken:   #2a2722;
+        --selected: #ffffff;
+        --ink:      #ffffff;
+        --muted:    #ddd6cb;
+        --on-selected: #000000;
+        --control:  #ada498;
+        --rule:     #5c554c;
+        --accent:   #f0d3a6;
+    }
+}
+
+/* Focus: ring outside the shape with a 2px gap, so it always sits on
+   paper or card (D1 v1, fokus.lage = aussen), never on a dark fill. */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+/* Native radios/checkbox: "selected" is a dark fill, not the accent. */
+input[type="radio"], input[type="checkbox"] { accent-color: var(--selected); }
+
+* { box-sizing: border-box; }
+
+html { font-size: 17px; }
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--control);
+}
+a:hover { text-decoration-color: currentColor; }
+
+.draft-banner {
+    background: var(--sunken);
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    font: 600 0.75rem/1.4 var(--mono);
+    letter-spacing: 0.04em;
+    text-align: center;
+    padding: 0.4rem 1rem;
+}
+
+.site-header, .site-footer {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 1.25rem 1rem;
+    font-family: var(--sans);
+}
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    border-bottom: 1px solid var(--rule);
+}
+.brand {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+.site-nav a { white-space: nowrap; }
+.site-nav a, .footer-nav a {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    text-decoration: none;
+}
+.site-nav a:hover, .footer-nav a:hover { color: var(--ink); }
+
+main {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 2.5rem 1rem 4rem;
+}
+
+h1, h2, h3 {
+    font-family: var(--sans);
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+}
+h1 { font-size: 1.9rem; margin: 0 0 1rem; }
+h2 { font-size: 1.15rem; margin: 2.4rem 0 0.6rem; }
+h3 { font-size: 1rem; margin: 1.8rem 0 0.4rem; }
+
+.lead { font-size: 1.2rem; }
+.meta, .muted { color: var(--muted); font-size: 0.9rem; }
+
+code, .badge {
+    font-family: var(--mono);
+    font-size: 0.85em;
+}
+.badge {
+    display: inline-block;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 0.15rem 0.5rem;
+    color: var(--muted);
+}
+
+.cta-row { margin: 2rem 0 0; }
+.cta {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    text-decoration: none;
+}
+.cta-primary { background: var(--ink); color: var(--paper); }
+.cta-primary:hover { background: var(--selected); border-color: var(--selected); color: var(--on-selected); }
+.store-note {
+    margin: 0.7rem 0 0;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+/* App screenshot: wider than the text column, centred on the page */
+.shot {
+    width: min(44rem, 92vw);
+    margin: 2.25rem 0 0 50%;
+    transform: translateX(-50%);
+}
+.shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+}
+.shot figcaption { margin-top: 0.7rem; text-align: center; }
+.shot-note {
+    display: block;
+    margin-top: 0.4rem;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+.site-footer {
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+.footer-nav a:first-child { margin-left: 0; }
+.footer-note { max-width: var(--measure); margin-top: 1rem; }
+
+@media (max-width: 480px) {
+    .site-nav a, .footer-nav a { margin-left: 0.7rem; }
+    h1 { font-size: 1.6rem; }
+    /* The brand already links home; this keeps the header on one line. */
+    .site-nav a[href="/"] { display: none; }
+    .shot .badge { font-size: 0.64rem; padding: 0.15rem 0.4rem; white-space: nowrap; }
+}
+
+/* Drei gleichrangige Karten, eine je Ansicht (RX-F24): gleiche Breite, gleiche Gestaltung */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1rem;
+    margin: 2rem 0 0;
+}
+.card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.1rem 1.1rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.card h2 { margin: 0 0 0.6rem; font-size: 1.05rem; }
+.card ul { margin: 0 0 0.8rem; padding-left: 1.1rem; }
+.card li { margin-bottom: 0.35rem; }
+.card .badge { margin-top: auto; align-self: flex-start; }
+@media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
+
+/* placeholders for owner data: clearly visible */
+.ph {
+    background: var(--sunken);
+    color: var(--ink);
+    outline: 1px dashed var(--control);
+    outline-offset: -1px;
+    font-family: var(--mono);
+    font-size: 0.85em;
+    padding: 0 0.25rem;
+    border-radius: 2px;
+}
+.shot-placeholder {
+    border: 2px dashed var(--rule);
+    border-radius: 6px;
+    padding: 3rem 1rem;
+    text-align: center;
+    font-family: var(--sans);
+    color: var(--muted);
+}
+
+/* Warteliste */
+.waitlist fieldset {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    margin: 1.4rem 0 0;
+    padding: 0.8rem 1rem 1rem;
+}
+.waitlist legend { font-family: var(--sans); font-weight: 600; padding: 0 0.3rem; }
+.waitlist label { display: block; margin: 0.35rem 0; font-family: var(--sans); font-size: 0.95rem; }
+.waitlist input[type="email"] {
+    width: 100%;
+    font: inherit;
+    padding: 0.55rem 0.6rem;
+    border: 1px solid var(--control);
+    border-radius: 3px;
+    background: var(--card);
+    color: var(--ink);
+}
+.waitlist .hint { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); margin: 0.5rem 0 0; }
+.waitlist .consent { display: flex; gap: 0.6rem; align-items: flex-start; }
+.waitlist .consent input { margin-top: 0.3rem; }
+.waitlist button {
+    margin-top: 1.4rem;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+}
+.waitlist button:hover { background: var(--selected); border-color: var(--selected); color: var(--on-selected); }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.notice {
+    border-left: 3px solid var(--muted);
+    padding: 0.4rem 0 0.4rem 0.9rem;
+    font-family: var(--sans);
+    font-size: 0.92rem;
+}
+.price-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.9rem; }
+.price-row .cta { min-width: 6.5rem; text-align: center; }
+.price-row .cta:hover { background: var(--ink); color: var(--paper); }
