@@ -1,7 +1,11 @@
 {
   "title": "RoomXDynamics",
+  "seoTitle": "RoomXDynamics · Room climate simulation for iPhone",
   "tagline": "Room climate in a 2D section: how air, walls and perceived temperature interact in the model. A qualitative simulation for iPhone, in development.",
   "baseUrl": "https://roomxdynamics.com",
+  "ogImage": "/assets/img/og-card.png",
+  "ogImageAlt": "RoomXDynamics: room climate in section. A qualitative simulation for iPhone, in development.",
+  "logo": "/assets/img/icon-512.png",
   "draft": false,
   "phone": "+49 172 8659265",
   "wIdNr": "DE417852742-00001",

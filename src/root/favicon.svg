@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .bg { fill: #f6f3ed; } .ink { fill: #23201c; }
+    @media (prefers-color-scheme: dark) { .bg { fill: #1b1916; } .ink { fill: #f3efe8; } }
+  </style>
+  <rect class="bg" width="64" height="64" rx="14"/>
+  <!-- Room in section: outside wall with window opening (left), ceiling, floor, inner wall -->
+  <rect class="ink" x="10" y="10" width="44" height="6"/>
+  <rect class="ink" x="10" y="48" width="44" height="6"/>
+  <rect class="ink" x="10" y="16" width="9" height="9"/>
+  <rect class="ink" x="10" y="37" width="9" height="11"/>
+  <rect class="ink" x="50" y="16" width="4" height="32"/>
+</svg>

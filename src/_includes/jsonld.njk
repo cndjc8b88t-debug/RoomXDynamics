@@ -1,0 +1,36 @@
+{#- Structured data for the home page. No App Store parts yet (no app ID): add downloadUrl,
+    offers and the App Store link in sameAs only once the app is listed. sameAs gets the
+    Instagram and YouTube profiles once those accounts exist. -#}
+{%- set ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": site.baseUrl + "/#organization",
+      "name": site.title,
+      "url": site.baseUrl + "/",
+      "logo": site.baseUrl + site.logo,
+      "email": site.contactEmail
+    },
+    {
+      "@type": "WebSite",
+      "@id": site.baseUrl + "/#website",
+      "name": site.title,
+      "url": site.baseUrl + "/",
+      "inLanguage": "en",
+      "publisher": { "@id": site.baseUrl + "/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": site.baseUrl + "/#app",
+      "name": site.title,
+      "operatingSystem": "iOS",
+      "applicationCategory": "UtilitiesApplication",
+      "description": "A qualitative simulation of room climate for iPhone, in development. It shows a slice through a room: how warm and cool air move in the model, how cool the wall surface gets and how the window shifts the felt-temperature trend. Not a measurement, not an expert report.",
+      "url": site.baseUrl + "/",
+      "image": site.baseUrl + site.ogImage,
+      "publisher": { "@id": site.baseUrl + "/#organization" }
+    }
+  ]
+} -%}
+<script type="application/ld+json">{{ ld | dump | safe }}</script>

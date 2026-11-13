@@ -2,6 +2,7 @@
 title: "Privacy Policy"
 permalink: /privacy/
 layout: base.njk
+description: "How roomxdynamics.com and the email waitlist handle personal data: hosting at GitHub Pages, waitlist emails at iCloud Mail. No tracking, no cookies."
 bodyClass: legal
 ---
 
