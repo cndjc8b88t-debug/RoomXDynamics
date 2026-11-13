@@ -10,7 +10,7 @@ Key facts:
 - Wall surface: steady-state heat conduction with common design values, not checked against standard texts; a qualitative risk estimate in three levels, with a range. It does not say whether mould will grow on a real wall, or why.
 - The results have not been checked against real rooms.
 - The website has no cookies, no analytics and no tracking.
-- From the makers of FlatSixDynamics and MachXDynamics.
+- From the makers of [FlatSixDynamics](https://flatsixdynamics.com/) and MachXDynamics.
 
 ## Pages
 

@@ -1,7 +1,7 @@
 {
   "title": "RoomXDynamics",
   "seoTitle": "RoomXDynamics · Room air and wall simulation for iPhone",
-  "tagline": "Room climate in a 2D section: how air, walls and perceived temperature interact in the model. A qualitative simulation for iPhone, in development.",
+  "tagline": "A slice through a room: how warm and cool air move and how cool the wall surface gets, in the model. A qualitative simulation for iPhone, in development.",
   "baseUrl": "https://roomxdynamics.com",
   "ogImage": "/assets/img/og-card.png",
   "ogImageAlt": "RoomXDynamics: room climate in section. A qualitative simulation for iPhone, in development.",

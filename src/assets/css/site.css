@@ -233,7 +233,7 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
     .shot .badge { font-size: 0.64rem; padding: 0.15rem 0.4rem; white-space: nowrap; }
 }
 
-/* Drei gleichrangige Karten, eine je Ansicht (RX-F24): gleiche Breite, gleiche Gestaltung */
+/* Equal-ranked cards, one per view: same width, same design. */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));

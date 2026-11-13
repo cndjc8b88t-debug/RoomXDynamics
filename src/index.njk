@@ -5,18 +5,9 @@ description: "How warm and cool air moves in a room and how cool its walls get, 
 
 <h1>See room climate in section.</h1>
 
-<p class="lead">RoomXDynamics is a simulation for iPhone. It shows a slice through a room with an outside wall and a window, in three views: how warm and cool air move through the room, how the window shifts the felt-temperature trend at a fixed spot, and how cool the wall surface gets. Everything happens in the model. The results are tendencies, not values for your room.</p>
+<p class="lead">RoomXDynamics is a simulation for iPhone. It shows a slice through a room with an outside wall and a window: how warm and cool air move through the room and how cool the wall surface gets. Everything happens in the model. The results are trends, not values for your room.</p>
 
 <div class="cards" id="cards">
-    <section class="card" data-card="felt">
-        <h2>Window and felt temperature</h2>
-        <ul>
-            <li>Why 21 °C can feel cold</li>
-            <li>How much better glazing changes that</li>
-        </ul>
-        <p class="muted">In development</p>
-        <span class="badge">Qualitative simulation · felt-temperature trend · not a measurement · not an expert report</span>
-    </section>
     <section class="card" data-card="air">
         <h2>Air in the room</h2>
         <ul>
@@ -35,8 +26,7 @@ description: "How warm and cool air moves in a room and how cool its walls get, 
     </section>
 </div>
 <script>
-// Random order of the three equal-ranked cards on each visit (RX-F24, one card per view).
-// No cookie, no storage, nothing is sent.
+// Random order of the equal-ranked cards on each visit, one card per view. No cookie, no storage, nothing is sent.
 (function () {
     var c = document.getElementById("cards");
     if (!c) { return; }
@@ -60,7 +50,6 @@ description: "How warm and cool air moves in a room and how cool its walls get, 
 
 <ul>
     <li><strong>Air in the room.</strong> A radiator below the window. Colors show which air is cooler or warmer than the average room air, markers show how the air moves. You choose the window, the wall, the radiator setting and the outside temperature.</li>
-    <li><strong>Window and felt temperature.</strong> A felt-temperature trend at a fixed spot in the room, for different windows. No radiator is included. In development.</li>
     <li><strong>Cool walls and mould.</strong> The temperature of the inner wall surface and a risk estimate in three levels, with a range. You enter the outdoor temperature, the room temperature, the humidity in the room and a wall template. In development.</li>
 </ul>
 
@@ -72,4 +61,4 @@ description: "How warm and cool air moves in a room and how cool its walls get, 
 
 <hr>
 
-<p class="muted">From the makers of FlatSixDynamics and MachXDynamics.</p>
+<p class="muted">From the makers of <a href="https://flatsixdynamics.com/">FlatSixDynamics</a> and MachXDynamics.</p>
