@@ -1,0 +1,24 @@
+# RoomXDynamics
+
+> RoomXDynamics is a qualitative room-climate simulation for iPhone, in development and not yet available in the App Store. It shows a slice through a room with an outside wall and a window: how warm and cool air move in the model, how cool the wall surface gets and how the window shifts the felt-temperature trend. The results are tendencies in the model, not values for a real room. It is not a measurement and not an expert report.
+
+Key facts:
+
+- Platform: iPhone (iOS). Status: in development, no release date, price not set.
+- Air in the room: a simplified two-dimensional picture, qualitative only.
+- Wall surface: steady-state heat conduction with common design values, not checked against standard texts; a qualitative risk estimate in three levels, with a range. It does not say whether mould will grow on a real wall, or why.
+- The results have not been checked against real rooms.
+- The website has no cookies, no analytics and no tracking.
+- From the makers of FlatSixDynamics and MachXDynamics.
+
+## Pages
+
+- [Home](https://roomxdynamics.com/): what the app shows, in three views
+- [How it works](https://roomxdynamics.com/method/): inputs, the 2D section, the result, the limits of the model
+- [Questions and answers](https://roomxdynamics.com/faq/): short factual answers
+- [Waitlist](https://roomxdynamics.com/waitlist/): notification by email, non-binding
+
+## Legal
+
+- [Privacy policy](https://roomxdynamics.com/privacy/)
+- [Imprint](https://roomxdynamics.com/imprint/)
