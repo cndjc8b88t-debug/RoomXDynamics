@@ -1,0 +1,22 @@
+{
+  "en": {
+    "title": "A look at the app",
+    "note": "Screenshots from the app on iPhone.",
+    "shots": [
+      { "file": "room-older-home", "caption": "Older home on a winter evening", "alt": "Screenshot of the room air view: an older home on a winter evening, with radiator, window and moving markers in a slice through the room." },
+      { "file": "room-insulated-home", "caption": "Insulated home with triple glazing", "alt": "Screenshot of the room air view: an insulated home with triple glazing." },
+      { "file": "room-curtain", "caption": "Renovated home with a curtain", "alt": "Screenshot of the room air view: a renovated home with a curtain at the window." },
+      { "file": "wall-solid", "caption": "Wall view: uninsulated solid wall", "alt": "Screenshot of the wall view: an uninsulated solid wall with the surface temperature and the three risk levels." }
+    ]
+  },
+  "de": {
+    "title": "Ein Blick in die App",
+    "note": "Bildschirmfotos aus der App auf dem iPhone.",
+    "shots": [
+      { "file": "room-older-home", "caption": "Altbau an einem Winterabend", "alt": "Bildschirmfoto der Raumluft-Ansicht: ein Altbau an einem Winterabend, mit Heizkörper, Fenster und bewegten Markierungen in einem Schnitt durch den Raum." },
+      { "file": "room-insulated-home", "caption": "Gedämmtes Haus mit Dreifachglas", "alt": "Bildschirmfoto der Raumluft-Ansicht: ein gedämmtes Haus mit Dreifachglas." },
+      { "file": "room-curtain", "caption": "Saniertes Haus mit Vorhang", "alt": "Bildschirmfoto der Raumluft-Ansicht: ein saniertes Haus mit einem Vorhang am Fenster." },
+      { "file": "wall-solid", "caption": "Wandansicht: ungedämmte Massivwand", "alt": "Bildschirmfoto der Wandansicht: eine ungedämmte Massivwand mit Oberflächentemperatur und den drei Risikostufen." }
+    ]
+  }
+}

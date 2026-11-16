@@ -307,3 +307,21 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 
 /* Tap targets on phones: legal links and the language switch at least ~36 px high */
 .footer-nav a, .lang-switch a { display: inline-block; padding: 0.55rem 0; }
+
+/* App screenshots: four in a row, swipeable on phones (CSS only) */
+.app-shots-row { list-style: none; padding: 0; margin: 1rem 0 2rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.app-shots-row figure { margin: 0; }
+.app-shots-row a { display: block; }
+.app-shots-row img {
+    display: block; width: 100%; height: auto; aspect-ratio: 300 / 652;
+    border: 1px solid var(--rule); border-radius: 14% / 6.5%; background: var(--card);
+}
+.app-shots-row figcaption { margin-top: 0.5rem; font-family: var(--sans); font-size: 0.85rem; color: var(--muted); line-height: 1.35; }
+@media (max-width: 600px) {
+    .app-shots-row {
+        grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 60%;
+        overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+        padding-bottom: 0.6rem; margin-right: -1rem; padding-right: 1rem;
+    }
+    .app-shots-row li { scroll-snap-align: start; }
+}

@@ -1,0 +1,22 @@
+{#- App screenshots as a calm gallery: four in a row on wide screens, swipeable on phones. No JS. -#}
+{%- set g = appshots[lang] -%}
+<section class="app-shots" aria-labelledby="app-shots-title">
+    <h2 id="app-shots-title">{{ g.title }}</h2>
+    <p class="muted">{{ g.note }}</p>
+    <ul class="app-shots-row">
+        {%- for s in g.shots %}
+        {%- set base = "/assets/img/app/" + lang + "-" + s.file %}
+        <li>
+            <figure>
+                <a href="{{ base }}-600.jpg">
+                    <picture>
+                        <source type="image/webp" srcset="{{ base }}-300.webp 300w, {{ base }}-600.webp 600w" sizes="(max-width: 600px) 60vw, 150px">
+                        <img src="{{ base }}-300.jpg" srcset="{{ base }}-300.jpg 300w, {{ base }}-600.jpg 600w" sizes="(max-width: 600px) 60vw, 150px" width="300" height="652" loading="lazy" decoding="async" alt="{{ s.alt }}">
+                    </picture>
+                </a>
+                <figcaption>{{ s.caption }}</figcaption>
+            </figure>
+        </li>
+        {%- endfor %}
+    </ul>
+</section>
