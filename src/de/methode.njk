@@ -1,0 +1,70 @@
+---
+layout: base.njk
+title: "So funktioniert es"
+permalink: /de/methode/
+alt: "/method/"
+description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis als Tendenz. Mit den Grenzen des Modells und der Herkunft der Werte."
+---
+
+<h1>So funktioniert es</h1>
+
+<p class="lead">Eingaben, ein Schnitt durch den Raum, ein Ergebnis als Tendenz. Diese Seite erklärt, was gerechnet wird, was angenommen wird und wo das Modell aufhört.</p>
+
+<p class="lang-note">Die App gibt es auf Deutsch und Englisch, sie folgt der Sprache Ihres iPhones.</p>
+
+<h2>Was gerechnet wird</h2>
+
+<p>Die App zeichnet die Luftströmung nicht von Hand. Sie berechnet Luftströmung und Temperatur. Für den Raum teilt ein Strömungslöser den Schnitt in kleine Zellen und berechnet Schritt für Schritt Luftströmung und Temperatur: wie warme Luft aufsteigt, kühle Luft absinkt und die Luft um einen Vorhang oder ein Sofa strömt. Für die Wand berechnet sie, wie Wärme durch jede Schicht der Wand fließt und wie warm die Innenoberfläche bleibt, bei fest angenommener Raumluft von 20 °C (übliche Annahme); die Wandansicht wird für sich gerechnet, nicht aus dem Luftbild. Aus Temperatur und Feuchte der Raumluft berechnet sie den Taupunkt, aus der Temperatur der Innenoberfläche die Feuchte an der Oberfläche.</p>
+
+<p>Das Modell ist zweidimensional. Solange der Heizkörper mitkommt, wird die Raumluft auf der Raumtemperatur der Szene gehalten. Seine Grenzen stehen unten.</p>
+
+<h2>1. Eingaben</h2>
+
+<p>In der Raumansicht wählen Sie Fenster, Wand, Heizkörper-Einstellung, Außentemperatur, Raumgröße und einen Vorhang oder ein Sofa an festen Positionen vor dem Fenster. In der Wandansicht wählen Sie Außentemperatur, relative Raumluftfeuchte und eine Wandvorlage (zum Beispiel eine ungedämmte oder eine außen gedämmte Wand). Die Ansicht zeigt das Ergebnis für die Wandfläche und in einer Zeile für die Außenkante.</p>
+
+<h2>2. Der 2D-Schnitt</h2>
+
+<p>Die App rechnet zwei Dinge, getrennt voneinander:</p>
+
+<ul>
+    <li><strong>Wandoberflächen.</strong> Die Temperatur der Wandoberfläche ergibt sich aus stationärer Wärmeleitung durch die Wand, gerechnet als Fall mit üblichen Randbedingungen. An einer Außenkante wird zweidimensional gerechnet. Eine echte Raumecke ist meist kälter als diese Kante.</li>
+    <li><strong>Luft im Raum.</strong> Die Luftbewegung, etwa die Walze über dem Heizkörper oder kühle Luft, die am Fenster absinkt, ist ein zweidimensionales Bild. Echte Raumluft ist dreidimensional und turbulent. Diese Schicht zeigt deshalb Mechanismen, keine Zahlen. Die Farben zeigen wärmere und kühlere Luft in groben Abstufungen auf einer festen °C-Skala, gemittelt über die letzte Minute Modellzeit; die Markierungen zeigen die Bewegung in diesem Moment.</li>
+</ul>
+
+<h2>3. Das Ergebnis</h2>
+
+<p>Für die Wandoberfläche zeigt die App eine Risiko-Einschätzung in drei Stufen mit Bandbreite, auf Grundlage gängiger Bemessungswerte. Sie zeigt, wo die Wand im Modell kritisch kühl wird.</p>
+
+<h2>Die Physik dahinter</h2>
+
+<p><strong>Raumluft.</strong> Die App löst die Gleichungen der auftriebsgetriebenen Luftströmung (Boussinesq-Gleichungen) in zwei Dimensionen. Der Schnitt ist in ein Gitter aus Zellen von etwa 3 cm Breite geteilt: 80 Zellen vom Boden zur Decke bei 2,5 m Raumhöhe, 96 bei 3,0 m, 112 bei 3,5 m. In jedem Zeitschritt berechnet der Löser Temperatur und Geschwindigkeit in jeder Zelle, hält die Luftmenge in jeder Zelle im Gleichgewicht und rechnet weiter. Vorhang und Sofa sind feste Hindernisse in diesem Gitter: Die Luft muss um sie herum, beim Vorhang geht nur wenig durch den Stoff.</p>
+
+<p><strong>An einem Referenzfall geprüft.</strong> Für einen Lehrbuchfall – Luft in einem quadratischen Kasten, auf einer Seite beheizt, auf der anderen gekühlt (de Vahl Davis, 1983) – trifft der Strömungslöser auf seinem feinsten Prüfgitter (128 × 128 Zellen) die veröffentlichten Referenzwerte innerhalb von 2 %. Das prüft den Löser, nicht Ihren Raum: Die Live-Ansicht rechnet auf einem viel gröberen Gitter und in einem anderen Strömungsbereich; dort zeigt sie nur Tendenzen.</p>
+
+<p><strong>Wand.</strong> Die Wandansicht wird für sich gerechnet, bei fest angenommener Raumluft von 20 °C (übliche Annahme); sie übernimmt die Raumluft nicht aus dem Strömungslöser. Die Wand wird Schicht für Schicht mit stationärer Wärmeleitung gerechnet, jede Schicht mit eigener Wärmeleitfähigkeit und Bandbreite. Die Außenkante kommt aus einer vorab gerechneten zweidimensionalen Wärmeleitung je Wandvorlage. Aus Temperatur und Feuchte der Raumluft berechnet die App den Taupunkt, aus der Temperatur der Innenoberfläche die Feuchte an der Oberfläche.</p>
+
+<p><strong>Was das heißt.</strong> Sorgfältig gebaute Physik: Auf seinem feinsten Prüfgitter ist der Strömungslöser eine gute numerische Näherung eines 2D-Modells. Die Live-Ansicht rechnet auf einem gröberen Gitter und zeigt Tendenzen, keine Werte für Ihren Raum; sie ist nicht an echten Räumen geprüft.</p>
+
+<h2>Woher die Werte kommen</h2>
+
+<p>Jede Zahl in der App ist gekennzeichnet:</p>
+
+<ul>
+    <li><strong>gerechnet</strong>: ein Ergebnis der Simulation aus Ihren Eingaben,</li>
+    <li><strong>Übliche Annahme</strong>: ein verbreiteter Bemessungswert, zum Beispiel für den Wärmeübergang an Oberflächen,</li>
+    <li><strong>Team-Annahme</strong>: ein Wert, den wir festgelegt haben, solange keine belastbare Quelle vorliegt. Die App sagt das dazu.</li>
+</ul>
+
+<h2>Grenzen</h2>
+
+<ul>
+    <li>Zwei statt drei Dimensionen. Ecken, Rollladenkästen und Anschlüsse im Raum fehlen.</li>
+    <li>Stationär: kein Tagesgang, keine Lüftung, keine Wärmespeicherung in der Wand.</li>
+    <li>Die Wand ist eine Vorlage, nicht der echte Aufbau eines bestimmten Hauses.</li>
+    <li>Die Luftbewegung ist qualitativ. Die App leitet daraus keine Aussagen über Zugluft in einem echten Raum ab.</li>
+    <li>Wirbel: Einzelne Wirbel kommen und gehen. Die Tendenz zeigt die Richtung der Luftbewegung.</li>
+    <li>Innendämmung ist nicht abgedeckt. Dafür braucht es eine andere Rechnung, bei der Feuchte durch die Wand wandert.</li>
+    <li>Möbel vor der Wand sind in der Wandansicht nicht abgedeckt.</li>
+</ul>
+
+<p class="notice">Wenn Sie Schimmel sehen: Lassen Sie die Wand vor Ort von einer Fachperson ansehen.</p>

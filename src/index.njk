@@ -1,11 +1,24 @@
 ---
 layout: base.njk
+alt: "/de/"
 description: "How warm and cool air moves in a room and how cool its walls get, in the model: a qualitative simulation for iPhone, in development. Not a measurement."
 ---
 
 <h1>See room climate in section.</h1>
 
-<p class="lead">RoomXDynamics is a simulation for iPhone. It shows a slice through a room with an outside wall and a window: how warm and cool air move through the room and how cool the wall surface gets. Everything happens in the model. The results are trends, not values for your room.</p>
+{% if site.heroClip %}
+<figure class="hero">
+    <video id="hero-clip" muted playsinline preload="none" poster="{{ site.heroPoster }}" aria-label="{{ site.heroAlt }}">
+        <source src="{{ site.heroClip }}" type="video/mp4">
+    </video>
+    <button type="button" class="hero-play" id="hero-play">Play</button>
+</figure>
+{% endif %}
+<p class="hero-badge"><span class="badge">2D simulation · qualitative</span></p>
+<p class="hero-line">A numerical flow solver for air flow and temperature in the room, and heat conduction through the wall, layer by layer. Carefully built physics: a numerical approximation in a 2D model.</p>
+<p class="hero-line">It shows trends, not values for your room. <a href="/method/">How it works</a></p>
+
+<p class="lead">RoomXDynamics is a simulation for iPhone. It shows a slice through a room with an outside wall and a window: how warm and cool air move through the room and how cool the wall surface gets.</p>
 
 <div class="cards" id="cards">
     <section class="card" data-card="air">
@@ -14,15 +27,14 @@ description: "How warm and cool air moves in a room and how cool its walls get, 
             <li>How a radiator sets the room air moving</li>
             <li>How warm and cool air circulate in a room slice</li>
         </ul>
-        <span class="badge">Room slice · qualitative · no comfort rating</span>
+        <span class="badge">2D simulation · qualitative</span>
     </section>
     <section class="card" data-card="mould">
         <h2>Cool walls and mould</h2>
         <ul>
             <li>Where walls get critically cool in the model</li>
         </ul>
-        <p class="muted">In development</p>
-        <span class="badge">Qualitative simulation – not a measurement, not an expert report</span>
+        <span class="badge">Wall · heat conduction · 3 risk levels</span>
     </section>
 </div>
 <script>
@@ -37,28 +49,37 @@ description: "How warm and cool air moves in a room and how cool its walls get, 
     }
     k.forEach(function (e) { c.appendChild(e); });
 })();
+// Hero clip: plays only on request, once, no loop. Nothing is stored or sent.
+(function () {
+    var v = document.getElementById("hero-clip"), b = document.getElementById("hero-play");
+    if (!v || !b) { return; }
+    b.addEventListener("click", function () { v.currentTime = 0; v.play(); b.hidden = true; });
+    v.addEventListener("ended", function () { b.textContent = "Play again"; b.hidden = false; });
+})();
 </script>
 
-<div class="cta-row">
-    <a class="cta cta-primary" href="/waitlist/">Join the waitlist</a>
-</div>
-<p class="store-note">RoomXDynamics is in development and not yet available.</p>
+<p class="store-note">RoomXDynamics is in development and not yet available.{% if site.social.length %} Follow it on {% for s in site.social %}<a href="{{ s.url }}">{{ s.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% endif %} Questions: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+
+<h2>A curtain at the window?</h2>
+<p>See how the curtain changes the air at the window.</p>
+
+<h2>A sofa under the window?</h2>
+<p>See how the sofa changes the air at the radiator.</p>
 
 <h2>What you see</h2>
 
 <p>Each view is a slice through a room with an outside wall and a window. You change a few inputs and watch how the picture shifts in the model.</p>
 
 <ul>
-    <li><strong>Air in the room.</strong> A radiator below the window. Colors show which air is cooler or warmer than the average room air, markers show how the air moves. You choose the window, the wall, the radiator setting and the outside temperature.</li>
-    <li><strong>Cool walls and mould.</strong> The temperature of the inner wall surface and a risk estimate in three levels, with a range. You enter the outdoor temperature, the room temperature, the humidity in the room and a wall template. In development.</li>
+    <li><strong>Air in the room.</strong> A radiator below the window. Colors show warmer and cooler air in broad steps, on a fixed °C scale; markers show how the air moves. You choose the window, the wall, the radiator setting, the outside temperature, the room size and a curtain or a sofa in front of the window.</li>
+    <li><strong>Cool walls and mould.</strong> The temperature of the inner wall surface and a risk estimate in three levels, with a range, for the flat wall and, in one line, for the outside edge. You choose the outdoor temperature, the humidity in the room and the wall. A real room corner is usually colder than this edge.</li>
 </ul>
 
-<h2>What it is, and what it is not</h2>
+<h2>How it is calculated</h2>
 
-<p>The app calculates wall temperatures as steady-state heat conduction with common boundary conditions, based on common design values, not checked against standard texts. The air movement is a simplified two-dimensional picture and qualitative only. Every view carries a badge that says which simplifications apply. The details are on the <a href="/method/">method</a> page, short answers under <a href="/faq/">questions and answers</a>.</p>
+<p>The wall is calculated with steady heat conduction from common design values; the air is a 2D flow simulation, shown qualitatively. The details are on the <a href="/method/">method</a> page, short answers under <a href="/faq/">questions and answers</a>.</p>
 
-<p class="notice">If you can see mould: consult a qualified building surveyor.</p>
+<p class="notice">If you can see mould: have the wall looked at on site by a professional.</p>
 
 <hr>
 
-<p class="muted">From the makers of <a href="https://flatsixdynamics.com/">FlatSixDynamics</a> and MachXDynamics.</p>

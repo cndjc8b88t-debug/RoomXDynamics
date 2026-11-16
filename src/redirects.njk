@@ -1,16 +1,16 @@
 ---
-# Old paths -> English pages (site is English only).
-# /impressum/ is gone; it now redirects to /imprint/.
+# Old paths from before the bilingual site. German paths go to the German pages.
 # The query string (?q=...) is carried over.
 pagination:
   data: moved
   size: 1
   alias: r
 moved:
-  - { from: "/methode/", to: "/method/" }
-  - { from: "/warteliste/", to: "/waitlist/" }
-  - { from: "/datenschutz/", to: "/privacy/" }
-  - { from: "/impressum/", to: "/imprint/" }
+  - { from: "/methode/", to: "/de/methode/" }
+  - { from: "/warteliste/", to: "/de/" }
+  - { from: "/waitlist/", to: "/" }
+  - { from: "/datenschutz/", to: "/de/datenschutz/" }
+  - { from: "/impressum/", to: "/de/impressum/" }
 permalink: "{{ r.from }}index.html"
 layout: redirect.njk
 eleventyComputed:

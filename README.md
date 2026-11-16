@@ -17,6 +17,8 @@ A push to `main` runs `.github/workflows/deploy.yml`, which builds the site with
 
 ## Pages
 
-`/`, `/method/`, `/waitlist/`, `/privacy/`, `/imprint/`, `404.html`. Old paths (`/methode/`, `/warteliste/`, `/datenschutz/`, `/impressum/`) redirect to the English pages.
+English: `/`, `/method/`, `/faq/`, `/privacy/`, `/imprint/`. German: `/de/`, `/de/methode/`, `/de/fragen/`, `/de/datenschutz/`, `/de/impressum/`. Plus `404.html`, `llms.txt` and the sitemap. A plain "DE | EN" link switches to the same page in the other language (no cookie, no storage). Old German paths (`/methode/`, `/warteliste/`, `/datenschutz/`, `/impressum/`) redirect to the German pages, `/waitlist/` to the start page.
+
+Text check: `npm run lint:text` after the build, tests with `npm run test:lint`.
 
 © Jürgen Grönner. All rights reserved.

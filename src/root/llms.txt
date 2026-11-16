@@ -4,22 +4,27 @@
 
 Key facts:
 
-- Platform: iPhone (iOS). Status: in development, no release date, price not set.
+- Platform: iPhone (iOS). App languages: German and English, following the language of the iPhone. Status: in development, no release date, price not set.
 - Audience: people who furnish, renovate or design their home.
-- Air in the room: a simplified two-dimensional picture, qualitative only.
-- Wall surface: steady-state heat conduction with common design values, not checked against standard texts; a qualitative risk estimate in three levels, with a range. It does not say whether mould will grow on a real wall, or why.
+- Air in the room: a two-dimensional flow simulation, shown qualitatively.
+- Wall surface: steady-state heat conduction with common design values; a qualitative risk estimate in three levels, with a range, for the flat wall and, in one line, for the outside edge. A real room corner is usually colder than the edge shown. It does not say whether mould will grow on a real wall, or why.
 - The results have not been checked against real rooms.
 - The website has no cookies, no analytics and no tracking.
-- From the makers of [FlatSixDynamics](https://flatsixdynamics.com/) and MachXDynamics.
 
 ## Pages
 
 - [Home](https://roomxdynamics.com/): what the app shows
 - [How it works](https://roomxdynamics.com/method/): inputs, the 2D section, the result, the limits of the model
 - [Questions and answers](https://roomxdynamics.com/faq/): short factual answers
-- [Waitlist](https://roomxdynamics.com/waitlist/): notification by email, non-binding
+
+## German pages
+
+- [Start (Deutsch)](https://roomxdynamics.com/de/): the same content in German. The app is in German and English and follows the language of the iPhone.
+- [So funktioniert es](https://roomxdynamics.com/de/methode/)
+- [Fragen und Antworten](https://roomxdynamics.com/de/fragen/)
 
 ## Legal
 
 - [Privacy policy](https://roomxdynamics.com/privacy/)
 - [Imprint](https://roomxdynamics.com/imprint/)
+- [Datenschutzerklärung](https://roomxdynamics.com/de/datenschutz/), [Impressum](https://roomxdynamics.com/de/impressum/)

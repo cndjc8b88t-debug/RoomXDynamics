@@ -1,4 +1,4 @@
-/* RoomXDynamics: calm typography, same scaffold as MachXDynamics.
+/* RoomXDynamics: calm typography.
    No CSS framework, no web fonts from third-party servers, no JS.
    System font stacks only; no externally loaded fonts. */
 
@@ -229,7 +229,7 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
     .site-nav a, .footer-nav a { margin-left: 0.7rem; }
     h1 { font-size: 1.6rem; }
     /* The brand already links home; this keeps the header on one line. */
-    .site-nav a[href="/"] { display: none; }
+    .site-nav > a[href="/"], .site-nav > a[href="/de/"] { display: none; }
     .shot .badge { font-size: 0.64rem; padding: 0.15rem 0.4rem; white-space: nowrap; }
 }
 
@@ -274,39 +274,6 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
     color: var(--muted);
 }
 
-/* Warteliste */
-.waitlist fieldset {
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    margin: 1.4rem 0 0;
-    padding: 0.8rem 1rem 1rem;
-}
-.waitlist legend { font-family: var(--sans); font-weight: 600; padding: 0 0.3rem; }
-.waitlist label { display: block; margin: 0.35rem 0; font-family: var(--sans); font-size: 0.95rem; }
-.waitlist input[type="email"] {
-    width: 100%;
-    font: inherit;
-    padding: 0.55rem 0.6rem;
-    border: 1px solid var(--control);
-    border-radius: 3px;
-    background: var(--card);
-    color: var(--ink);
-}
-.waitlist .hint { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); margin: 0.5rem 0 0; }
-.waitlist .consent { display: flex; gap: 0.6rem; align-items: flex-start; }
-.waitlist .consent input { margin-top: 0.3rem; }
-.waitlist button {
-    margin-top: 1.4rem;
-    font-family: var(--sans);
-    font-size: 0.95rem;
-    padding: 0.7rem 1.4rem;
-    border: 1px solid var(--ink);
-    border-radius: 2px;
-    background: var(--ink);
-    color: var(--paper);
-    cursor: pointer;
-}
-.waitlist button:hover { background: var(--selected); border-color: var(--selected); color: var(--on-selected); }
 .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .notice {
     border-left: 3px solid var(--muted);
@@ -317,3 +284,26 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 .price-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.9rem; }
 .price-row .cta { min-width: 6.5rem; text-align: center; }
 .price-row .cta:hover { background: var(--ink); color: var(--paper); }
+
+/* Hero: app clip, plays only on request (no autoplay, no loop) */
+.hero { margin: 1.5rem 0 0.5rem; position: relative; }
+.hero video { display: block; width: 100%; height: auto; border-radius: 6px; background: var(--sunken); }
+.hero-play {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    font: 600 1rem var(--sans); color: var(--on-selected); background: var(--selected);
+    border: 0; border-radius: 999px; padding: 0.6rem 1.2rem; cursor: pointer;
+}
+.hero-play:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hero-badge { margin: 0.6rem 0 0.2rem; }
+.hero-line { margin: 0 0 1.5rem; color: var(--muted); font-family: var(--sans); font-size: 0.95rem; }
+
+/* Language note on German pages */
+.lang-note { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; margin: -0.4rem 0 1rem; }
+/* Language switch "DE | EN", top right: a plain link to the same page in the other language (no JS, no cookie) */
+.lang-switch { margin-left: 1rem; font-size: 0.9rem; color: var(--muted); white-space: nowrap; }
+.site-nav .lang-switch a { margin-left: 0; }
+.lang-sep { margin: 0 0.35rem; }
+.lang-current { color: var(--ink); font-weight: 600; }
+
+/* Tap targets on phones: legal links and the language switch at least ~36 px high */
+.footer-nav a, .lang-switch a { display: inline-block; padding: 0.55rem 0; }

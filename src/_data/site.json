@@ -11,5 +11,9 @@
   "wIdNr": "DE417852742-00001",
   "contactEmail": "support@roomxdynamics.com",
   "privacyEmail": "legal@roomxdynamics.com",
-  "language": "en"
+  "language": "en",
+  "heroClip": null,
+  "heroPoster": null,
+  "heroAlt": "A slice through a room in RoomXDynamics: a radiator below the window and the room air, in the model.",
+  "social": []
 }

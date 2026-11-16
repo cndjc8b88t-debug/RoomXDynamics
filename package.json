@@ -7,7 +7,9 @@
   "scripts": {
     "build": "eleventy",
     "serve": "eleventy --serve --port=8083",
-    "clean": "rm -rf _site"
+    "clean": "rm -rf _site",
+    "lint:text": "node scripts/lint-text.mjs",
+    "test:lint": "node scripts/lint-text.test.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"
