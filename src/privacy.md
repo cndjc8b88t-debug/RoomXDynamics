@@ -19,8 +19,6 @@ RoomXDynamics is a room climate simulation for iPhone. This page explains what h
 
 The RoomXDynamics app does not collect personal data. It has no user account, no analytics, no advertising and no tracking, and it contains no third-party software development kits. All calculations run on your iPhone; nothing you enter is sent to us or to anyone else, and the app does not save your inputs.
 
-If you export an image, it is created on your iPhone. Where it goes is up to you, through the share options of iOS; we do not receive it.
-
 If you have allowed it in your iPhone settings, Apple may share crash reports and usage data with app developers. These reports do not identify you to us. We use them only to find and fix errors. Apple's handling of this data is governed by [Apple's Privacy Policy](https://www.apple.com/legal/privacy/).
 
 The privacy information on the App Store says the same: no data collected.
