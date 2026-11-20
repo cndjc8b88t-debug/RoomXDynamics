@@ -14,13 +14,13 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
 
 <h2>Was gerechnet wird</h2>
 
-<p>Die App zeichnet die Luftströmung nicht von Hand. Sie berechnet Luftströmung und Temperatur. Für den Raum teilt ein Strömungslöser den Schnitt in kleine Zellen und berechnet Schritt für Schritt Luftströmung und Temperatur: wie warme Luft aufsteigt, kühle Luft absinkt und die Luft um einen Vorhang oder ein Sofa strömt. Für die Wand berechnet sie, wie Wärme durch jede Schicht der Wand fließt und wie warm die Innenoberfläche bleibt, bei fest angenommener Raumluft von 20 °C (übliche Annahme); die Wandansicht wird für sich gerechnet, nicht aus dem Luftbild. Aus Temperatur und Feuchte der Raumluft berechnet sie den Taupunkt, aus der Temperatur der Innenoberfläche die Feuchte an der Oberfläche.</p>
+<p>Die App zeichnet die Luftströmung nicht von Hand. Sie berechnet Luftströmung und Temperatur. Für den Raum teilt ein Strömungslöser den Schnitt in kleine Zellen und berechnet Schritt für Schritt Luftströmung und Temperatur: wie warme Luft aufsteigt, kühle Luft absinkt und die Luft um einen Vorhang oder ein Sofa strömt. Für die Wand berechnet sie, wie Wärme durch jede Schicht der Wand fließt und wie warm die Innenoberfläche bleibt, bei einer auf 20 °C geregelten Raumluft (übliche Annahme); die Farben und die Strömung der Luft nimmt die Wandansicht nicht mit. Aus Temperatur und Feuchte der Raumluft berechnet sie den Taupunkt, aus der Temperatur der Innenoberfläche die Feuchte an der Oberfläche.</p>
 
 <p>Das Modell ist zweidimensional. Solange der Heizkörper mitkommt, wird die Raumluft auf der Raumtemperatur der Szene gehalten. Seine Grenzen stehen unten.</p>
 
 <h2>1. Eingaben</h2>
 
-<p>In der Raumansicht wählen Sie Fenster, Wand, Heizkörper-Einstellung, Außentemperatur, Raumgröße und einen Vorhang oder ein Sofa an festen Positionen vor dem Fenster. In der Wandansicht wählen Sie Außentemperatur, relative Raumluftfeuchte und eine Wandvorlage (zum Beispiel eine ungedämmte oder eine außen gedämmte Wand). Die Ansicht zeigt das Ergebnis für die Wandfläche und in einer Zeile für die Außenkante.</p>
+<p>In der Raumansicht wählen Sie Fenster, Wand, Heizkörper-Einstellung, Außentemperatur, Raumgröße und einen Vorhang oder ein Sofa an festen Positionen vor dem Fenster. In der Wandansicht wählen Sie Außentemperatur, relative Raumluftfeuchte und eine Wandvorlage (zum Beispiel eine ungedämmte oder eine außen gedämmte Wand). Die Ansicht zeigt das Ergebnis für die freie Fläche der Außenwand und in einer Zeile für die Außenkante.</p>
 
 <h2>2. Der 2D-Schnitt</h2>
 
@@ -41,7 +41,7 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
 
 <p><strong>An einem Referenzfall geprüft.</strong> Für einen Lehrbuchfall – Luft in einem quadratischen Kasten, auf einer Seite beheizt, auf der anderen gekühlt (de Vahl Davis, 1983) – trifft der Strömungslöser auf seinem feinsten Prüfgitter (128 × 128 Zellen) die veröffentlichten Referenzwerte innerhalb von 2 %. Das prüft den Löser, nicht Ihren Raum: Die Live-Ansicht rechnet auf einem viel gröberen Gitter und in einem anderen Strömungsbereich; dort zeigt sie nur Tendenzen.</p>
 
-<p><strong>Wand.</strong> Die Wandansicht wird für sich gerechnet, bei fest angenommener Raumluft von 20 °C (übliche Annahme); sie übernimmt die Raumluft nicht aus dem Strömungslöser. Die Wand wird Schicht für Schicht mit stationärer Wärmeleitung gerechnet, jede Schicht mit eigener Wärmeleitfähigkeit und Bandbreite. Die Außenkante kommt aus einer vorab gerechneten zweidimensionalen Wärmeleitung je Wandvorlage. Aus Temperatur und Feuchte der Raumluft berechnet die App den Taupunkt, aus der Temperatur der Innenoberfläche die Feuchte an der Oberfläche.</p>
+<p><strong>Wand.</strong> Die Wandansicht übernimmt Wandvorlage und Außentemperatur aus der Raumansicht und rechnet einen Dauerzustand mit einer auf 20 °C geregelten Raumluft (übliche Annahme); die Lufttemperatur aus dem Strömungslöser übernimmt sie nicht. Der Wärmeübergang an der Innenoberfläche umfasst Luft und Strahlung (übliche Annahme). Die Wand wird Schicht für Schicht mit stationärer Wärmeleitung gerechnet, jede Schicht mit eigener Wärmeleitfähigkeit und Bandbreite. Die Außenkante kommt aus einer vorab gerechneten zweidimensionalen Wärmeleitung je Wandvorlage. Aus Temperatur und Feuchte der Raumluft berechnet die App den Taupunkt, aus der Temperatur der Innenoberfläche die Feuchte an der Oberfläche.</p>
 
 <p><strong>Was das heißt.</strong> Sorgfältig gebaute Physik: Auf seinem feinsten Prüfgitter ist der Strömungslöser eine gute numerische Näherung eines 2D-Modells. Die Live-Ansicht rechnet auf einem gröberen Gitter und zeigt Tendenzen, keine Werte für Ihren Raum; sie ist nicht an echten Räumen geprüft.</p>
 
@@ -65,6 +65,7 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
     <li>Wirbel: Einzelne Wirbel kommen und gehen. Die Tendenz zeigt die Richtung der Luftbewegung.</li>
     <li>Innendämmung ist nicht abgedeckt. Dafür braucht es eine andere Rechnung, bei der Feuchte durch die Wand wandert.</li>
     <li>Möbel vor der Wand sind in der Wandansicht nicht abgedeckt.</li>
+    <li>Die Wand hinter dem Heizkörper ist nicht gerechnet. Sie kann dort wärmer oder kälter sein als die freie Fläche der Wand, je nach Bauart.</li>
 </ul>
 
 <p class="notice">Wenn Sie Schimmel sehen: Lassen Sie die Wand vor Ort von einer Fachperson ansehen.</p>

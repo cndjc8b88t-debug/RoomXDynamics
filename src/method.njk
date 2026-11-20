@@ -12,13 +12,13 @@ description: "How RoomXDynamics calculates: inputs, a 2D section, a result as a 
 
 <h2>What is calculated</h2>
 
-<p>The app does not draw the air flow by hand. It calculates air flow and temperature. For the room, a flow solver divides the section into small cells and works out, step by step, air flow and temperature: how warm air rises, cool air sinks and the air moves around a curtain or a sofa. For the wall, it calculates how heat flows through each layer of the wall and how warm the inner surface stays, with room air fixed at 20 °C (common assumption); the wall view is calculated on its own, not from the air picture. From the room air temperature and humidity, it calculates the dew point, and from the inner surface temperature the humidity at the surface.</p>
+<p>The app does not draw the air flow by hand. It calculates air flow and temperature. For the room, a flow solver divides the section into small cells and works out, step by step, air flow and temperature: how warm air rises, cool air sinks and the air moves around a curtain or a sofa. For the wall, it calculates how heat flows through each layer of the wall and how warm the inner surface stays, with room air regulated at 20 °C (common assumption); the wall view does not use the colors or the movement of the air. From the room air temperature and humidity, it calculates the dew point, and from the inner surface temperature the humidity at the surface.</p>
 
 <p>The model is two-dimensional. While the radiator keeps up, the room air is held at the temperature set for the scene. Its limits are listed below.</p>
 
 <h2>1. Inputs</h2>
 
-<p>In the room view you choose the window, the wall, the radiator setting, the outside temperature, the room size and a curtain or a sofa at fixed positions in front of the window. In the wall view you choose the outdoor temperature, the relative humidity in the room and a wall template (for example an uninsulated wall or one insulated on the outside). The view shows the result for the flat wall and, in one line, for the outside edge.</p>
+<p>In the room view you choose the window, the wall, the radiator setting, the outside temperature, the room size and a curtain or a sofa at fixed positions in front of the window. In the wall view you choose the outdoor temperature, the relative humidity in the room and a wall template (for example an uninsulated wall or one insulated on the outside). The view shows the result for the open area of the outside wall and, in one line, for the outside edge.</p>
 
 <h2>2. The 2D section</h2>
 
@@ -40,7 +40,7 @@ description: "How RoomXDynamics calculates: inputs, a 2D section, a result as a 
 
 <p><strong>Checked against a reference case.</strong> For a textbook case – air in a square box heated on one side and cooled on the other (de Vahl Davis, 1983) – the flow solver, on its finest test grid (128 × 128 cells), matches the published reference values to within 2 %. This tests the solver, not your room: the live view runs on a much coarser grid and in a different flow regime, so there it shows trends only.</p>
 
-<p><strong>Wall.</strong> The wall view is calculated on its own, with room air fixed at 20 °C (common assumption); it does not take the room air from the flow solver. The wall is calculated layer by layer with steady heat conduction, each layer with its own thermal conductivity and a range. The outside edge comes from a two-dimensional heat conduction calculation done in advance for each wall template. From the room air temperature and humidity, the app calculates the dew point. From the inner surface temperature, it calculates the humidity at the surface.</p>
+<p><strong>Wall.</strong> The wall view takes the wall template and the outside temperature from the room view and calculates a steady state with room air regulated at 20 °C (common assumption); it does not take the air temperature from the flow solver. The heat transfer at the inner surface covers both air and radiation (common assumption). The wall is calculated layer by layer with steady heat conduction, each layer with its own thermal conductivity and a range. The outside edge comes from a two-dimensional heat conduction calculation done in advance for each wall template. From the room air temperature and humidity, the app calculates the dew point. From the inner surface temperature, it calculates the humidity at the surface.</p>
 
 <p><strong>What this means.</strong> Carefully built physics: on its finest test grid, the flow solver is a good numerical approximation of a 2D model. The live view runs on a coarser grid and shows trends, not values for your room; it has not been checked against real rooms.</p>
 
@@ -64,6 +64,7 @@ description: "How RoomXDynamics calculates: inputs, a 2D section, a result as a 
     <li>Swirls: single swirls come and go. What shows the trend is the overall direction of the air.</li>
     <li>Internal insulation is not covered. It needs a different kind of calculation, with moisture moving through the wall.</li>
     <li>Furniture in front of the wall is not covered in the wall view.</li>
+    <li>The wall behind the radiator is not calculated. Depending on how it is built, it can be warmer or colder there than the open area of the wall.</li>
 </ul>
 
 <p class="notice">If you can see mould: have the wall looked at on site by a professional.</p>
