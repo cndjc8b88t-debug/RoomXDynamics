@@ -1,7 +1,7 @@
 {
   "title": "RoomXDynamics",
   "seoTitle": "RoomXDynamics · Room air and wall simulation for iPhone",
-  "tagline": "A slice through a room: how warm and cool air move and how cool the wall surface gets, in the model. A qualitative simulation for iPhone, in development.",
+  "tagline": "A section through a room: how warm and cool air move and how cool the wall surface gets, in the model. A qualitative simulation for iPhone, in development.",
   "baseUrl": "https://roomxdynamics.com",
   "ogImage": "/assets/img/og-card.png",
   "ogImageAlt": "RoomXDynamics: room climate in section. A qualitative simulation for iPhone, in development.",
@@ -14,6 +14,6 @@
   "language": "en",
   "heroClip": null,
   "heroPoster": null,
-  "heroAlt": "A slice through a room in RoomXDynamics: a radiator below the window and the room air, in the model.",
+  "heroAlt": "A section through a room in RoomXDynamics: a radiator below the window and the room air, in the model.",
   "social": []
 }

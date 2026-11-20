@@ -12,7 +12,7 @@ description: "How RoomXDynamics calculates: inputs, a 2D section, a result as a 
 
 <h2>What is calculated</h2>
 
-<p>The app does not draw the air flow by hand. It calculates air flow and temperature. For the room, a flow solver divides the slice into small cells and works out, step by step, air flow and temperature: how warm air rises, cool air sinks and the air moves around a curtain or a sofa. For the wall, it calculates how heat flows through each layer of the wall and how warm the inner surface stays, with room air fixed at 20 °C (common assumption); the wall view is calculated on its own, not from the air picture. From the room air temperature and humidity, it calculates the dew point, and from the inner surface temperature the humidity at the surface.</p>
+<p>The app does not draw the air flow by hand. It calculates air flow and temperature. For the room, a flow solver divides the section into small cells and works out, step by step, air flow and temperature: how warm air rises, cool air sinks and the air moves around a curtain or a sofa. For the wall, it calculates how heat flows through each layer of the wall and how warm the inner surface stays, with room air fixed at 20 °C (common assumption); the wall view is calculated on its own, not from the air picture. From the room air temperature and humidity, it calculates the dew point, and from the inner surface temperature the humidity at the surface.</p>
 
 <p>The model is two-dimensional. While the radiator keeps up, the room air is held at the temperature set for the scene. Its limits are listed below.</p>
 
@@ -36,7 +36,7 @@ description: "How RoomXDynamics calculates: inputs, a 2D section, a result as a 
 
 <h2>The physics inside</h2>
 
-<p><strong>Room air.</strong> The app solves the equations of buoyant air flow (the Boussinesq equations) in two dimensions. The slice is divided into a grid of cells about 3 cm wide: 80 cells from floor to ceiling in a room 2.5 m high, 96 at 3.0 m, 112 at 3.5 m. In every time step the solver works out temperature and velocity in each cell, keeps the amount of air in each cell balanced, and moves on. Curtain and sofa are solid obstacles in this grid: the air has to go around them, or, for the curtain, can pass only a little through the fabric.</p>
+<p><strong>Room air.</strong> The app solves the equations of buoyant air flow (the Boussinesq equations) in two dimensions. The section is divided into a grid of cells about 3 cm wide: 80 cells from floor to ceiling in a room 2.5 m high, 96 at 3.0 m, 112 at 3.5 m. In every time step the solver works out temperature and velocity in each cell, keeps the amount of air in each cell balanced, and moves on. Curtain and sofa are solid obstacles in this grid: the air has to go around them, or, for the curtain, can pass only a little through the fabric.</p>
 
 <p><strong>Checked against a reference case.</strong> For a textbook case – air in a square box heated on one side and cooled on the other (de Vahl Davis, 1983) – the flow solver, on its finest test grid (128 × 128 cells), matches the published reference values to within 2 %. This tests the solver, not your room: the live view runs on a much coarser grid and in a different flow regime, so there it shows trends only.</p>
 

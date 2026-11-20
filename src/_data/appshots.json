@@ -3,7 +3,7 @@
     "title": "A look at the app",
     "note": "Screenshots from the app on iPhone.",
     "shots": [
-      { "file": "room-older-home", "caption": "Older home on a winter evening", "alt": "Screenshot of the room air view: an older home on a winter evening, with radiator, window and moving markers in a slice through the room." },
+      { "file": "room-older-home", "caption": "Older home on a winter evening", "alt": "Screenshot of the room air view: an older home on a winter evening, with radiator, window and moving markers in a section through the room." },
       { "file": "room-insulated-home", "caption": "Insulated home with triple glazing", "alt": "Screenshot of the room air view: an insulated home with triple glazing." },
       { "file": "room-curtain", "caption": "Renovated home with a curtain", "alt": "Screenshot of the room air view: a renovated home with a curtain at the window." },
       { "file": "wall-solid", "caption": "Wall view: uninsulated solid wall", "alt": "Screenshot of the wall view: an uninsulated solid wall with the surface temperature and the three risk levels." }
