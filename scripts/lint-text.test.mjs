@@ -35,6 +35,21 @@ const cases = [
     ["Vereinfachung in JSON-LD", { "x/index.html": page({ head: '<script type="application/ld+json">{"description":"Eine Vereinfachung."}</script>' }) }, 1, "[json-ld]: Vereinfachung"],
     ["Einfachverglasung allowed", { "x/index.html": page({ body: "<p>Einfachverglasung und Einfachglas.</p>" }) }, 0, "clean"],
     ["attribute with fixed formula", { "x/index.html": page({ body: '<img src="a.png" alt="Wall badge: DIN 4108-2 convention">' }) }, 0, "clean"],
+    // 5 · procedure terms (Marlow Textlinie Info § 6, N1-N18)
+    ["procedure: Boussinesq", { "x/index.html": page({ body: "<p>The Boussinesq equations.</p>" }) }, 1, "procedure term N1"],
+    ["procedure: grid in text", { "x/index.html": page({ body: "<p>A live grid of cells.</p>" }) }, 1, "procedure term N6"],
+    ["procedure: Gitter und Zellen", { "x/index.html": page({ body: "<p>Ein Gitter aus 80 Zellen.</p>" }) }, 1, "procedure term N7"],
+    ["procedure: 128 x 128 in alt", { "x/index.html": page({ body: '<img src="a.png" alt="Test 128 × 128">' }) }, 1, "procedure term N8"],
+    ["procedure: named reference case", { "x/index.html": page({ body: "<p>de Vahl Davis (1983).</p>" }) }, 1, "procedure term N9"],
+    ["procedure: within 2 %", { "x/index.html": page({ body: "<p>Within 2&nbsp;%.</p>" }) }, 1, "procedure term N10"],
+    ["procedure: 12 % is no hit", { "x/index.html": page({ body: "<p>At 12 % and 2,5 %.</p>" }) }, 0, "clean"],
+    ["procedure: about 3 cm", { "x/index.html": page({ body: "<p>About 3 cm wide.</p>" }) }, 1, "procedure term N11"],
+    ["procedure: Strömungslöser in meta", { "x/index.html": page({ head: '<meta name="description" content="Ein Strömungslöser.">' }) }, 1, "procedure term N12"],
+    ["procedure: numerical in JSON-LD", { "x/index.html": page({ head: '<script type="application/ld+json">{"description":"A numerical model."}</script>' }) }, 1, "procedure term N13"],
+    ["procedure: flow regime in llms.txt", { "llms.txt": "- A different flow regime.\n" }, 1, "procedure term N14"],
+    ["procedure: last minute", { "x/index.html": page({ body: "<p>Averaged over the last minute.</p>" }) }, 1, "procedure term N17"],
+    ["procedure: mold threshold", { "x/index.html": page({ body: "<p>The mold threshold.</p>" }) }, 1, "procedure term N18"],
+    ["procedure: allowed words", { "x/index.html": page({ body: "<p>2D section, live calculation, calculation core, lower resolution, a recognized reference case from the technical literature, heat conduction. Einfachverglasung, Rechenkern, Auflösung.</p>" }) }, 0, "clean"],
 ];
 
 let failed = 0;

@@ -1,7 +1,8 @@
 // Word check for the built site (_site). Run after the build: npm run lint:text
 // Checks visible page text, the attributes alt, aria-label and title, JSON-LD, titles and metadata,
 // and llms.txt against the word rules of RoomXDynamics (no claims of accuracy or
-// measurement, no comfort, health or mould-free claims, no verdict words for walls, no landlord topics).
+// measurement, no comfort, health or mold-free claims, no verdict words for walls, no landlord topics)
+// and against the list of procedure terms (PROCEDURE, below).
 // Legal pages are excluded: their legal wording ("adequate level of protection", "certified under
 // the EU-US Data Privacy Framework") is not a product statement.
 import { readFileSync, readdirSync, statSync } from "node:fs";
@@ -41,6 +42,34 @@ const BLOCKED = [
     // never call the model simple; compounds like "Einfachverglasung" stay allowed
     /\b(simple|simply|simplif\w*|simplistic|basic)\b/i,
     /(?<![\p{L}])(einfach(e[mnrs]?)?|vereinfach\p{L}*|Vereinfachung\p{L}*)(?![\p{L}])/iu
+];
+
+// Procedure terms (Marlow, Textlinie Info 21.11.2026, § 6, list N1-N18; Jürgen J-1): the site says what is calculated,
+// what is not, where a number comes from and how reliable it is, never how it is calculated. No method, no grid, no
+// cell count, no named reference case, no deviation in percent. Checked in every part (text, attributes, meta,
+// JSON-LD, llms.txt). Allowed on purpose: "2D section", "live calculation", "calculation core", "resolution",
+// "reference case from the technical literature" (unnamed), "heat conduction".
+const PROCEDURE = [
+    [/boussinesq/gi, "N1"], [/\blaminar/gi, "N2"],
+    [/versetzt\p{L}*\s+gitter/giu, "N3"], [/staggered/gi, "N3"],
+    [/dreistufig/gi, "N4"], [/three-stage/gi, "N4"], [/\brunge\b/gi, "N4"], [/\brk ?3\b/gi, "N4"],
+    [/mehrgitter/gi, "N5"], [/multi-?grid/gi, "N5"],
+    [/gitter/gi, "N6"], [/\bgrids?\b/gi, "N6"],
+    [/(?<![\p{L}])zellen?(?![\p{L}])/giu, "N7"], [/\bcells?\b/gi, "N7"],
+    [/128\s*[×x]\s*128/gi, "N8"], [/128²/g, "N8"],
+    [/vahl/gi, "N9"], [/davis/gi, "N9"], [/\b1983\b/g, "N9"],
+    [/(?<![\d.,])2\s?%/g, "N10"],
+    [/(?<![\d,.])3\s?cm\b/gi, "N11"],
+    [/l(ö|oe)ser/gi, "N12"], [/\bsolvers?\b/gi, "N12"],
+    [/numeri/gi, "N13"], [/näherung/gi, "N13"], [/approximation/gi, "N13"],
+    [/strömungsbereich/gi, "N14"], [/flow regimes?/gi, "N14"],
+    [/quadratischen kasten/gi, "N15"], [/square box/gi, "N15"], [/lehrbuchfall/gi, "N15"], [/textbook case/gi, "N15"],
+    [/differentially heated/gi, "N15"],
+    [/rayleigh/gi, "N16"], [/prandtl/gi, "N16"], [/navier/gi, "N16"], [/chorin/gi, "N16"], [/projektion/gi, "N16"],
+    [/projection/gi, "N16"], [/finite[ -]?(volum|differen|element)/gi, "N16"], [/\bMAC\b/g, "N16"], [/\bCFL\b/g, "N16"],
+    [/\bRa\s?[≈=]/g, "N16"],
+    [/letzten? minute/gi, "N17"], [/last minute/gi, "N17"], [/gemittelt über/gi, "N17"], [/averaged over/gi, "N17"],
+    [/schimmelgrenze/gi, "N18"], [/schimmel-?schwelle/gi, "N18"], [/mold threshold/gi, "N18"], [/\bmould/gi, "N18"]
 ];
 
 function files(dir) {
@@ -89,6 +118,10 @@ function check(rel, where, raw, dinNever) {
     if (dinNever) {
         const d = text.match(/\bDIN\b/g);
         if (d) { problems += d.length; console.log(`${rel} [${where}]: DIN in title, metadata, heading, JSON-LD or llms.txt`); }
+    }
+    for (const [p, n] of PROCEDURE) {
+        const m = text.match(p);
+        if (m) { problems += m.length; console.log(`${rel} [${where}]: procedure term ${n}: ${[...new Set(m)].join(", ")}`); }
     }
     for (const a of ALLOWED) text = text.replace(a, " ");
     for (const b of BLOCKED) {
