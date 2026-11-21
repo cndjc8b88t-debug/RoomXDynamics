@@ -25,8 +25,8 @@ description: "How RoomXDynamics calculates: inputs, a 2D section, a result as a 
 <p>The app calculates two things, separately:</p>
 
 <ul>
-    <li><strong>Wall surfaces.</strong> The temperature of the wall surface comes from steady-state heat conduction through the wall, calculated as a case with common boundary conditions. At an outside edge the calculation is two-dimensional. A real room corner is usually colder than this edge.</li>
-    <li><strong>Air in the room.</strong> The air movement, such as the circulation above the radiator or cool air sinking at the window, is a two-dimensional picture. Real room air moves in every direction and less evenly than in the model. This layer therefore shows mechanisms, not numbers. The colors show warmer and cooler air in broad steps, on a fixed °C scale, and they follow changes calmly; the markers show the movement at this moment.</li>
+    <li><strong>Wall surfaces.</strong> The temperature of the wall surface comes from heat conduction in a settled state through the wall, calculated as a case with common boundary conditions. At an outside edge the calculation is two-dimensional. A real room corner is usually colder than this edge.</li>
+    <li><strong>Air in the room.</strong> The air movement, such as the circulation above the radiator or cool air sinking at the window, is a two-dimensional picture. Real room air moves in every direction and less evenly than in the model. This layer therefore shows mechanisms, not numbers. The colors show warmer and cooler air in broad steps, on a fixed °C scale. They show a short time average, so they follow changes with a slight delay; the markers show the movement at this moment.</li>
 </ul>
 
 
@@ -38,9 +38,9 @@ description: "How RoomXDynamics calculates: inputs, a 2D section, a result as a 
 
 <p><strong>Room air.</strong> Air flow and temperature are calculated, not drawn. The app keeps working out how warm air rises above the radiator, how cool air sinks at the window and how the air moves around a curtain or a sofa, in a section through the middle of the room, live on the iPhone. Curtain and sofa are solid obstacles: the air has to go around them, or, for the curtain, can pass only a little through the fabric.</p>
 
-<p><strong>How reliable it is.</strong> We checked the app's calculation core against a recognized reference case from the technical literature, at a higher resolution than the live view. That checks the calculation core, not your room: the live view calculates at a lower resolution so that it runs smoothly on the iPhone, and real room air moves in every direction and less evenly than in the model. The view therefore shows trends, not values for your room. It has not been compared with real rooms.</p>
+<p><strong>How reliable it is.</strong> We checked the calculation core for the room air against a recognized reference case from the technical literature, at a higher resolution than the live view. That checks the calculation core, not the live view: it calculates at a lower resolution so that it runs smoothly on the iPhone, and real room air moves in every direction and less evenly than in the model. The view therefore shows trends, not values for your room. It has not been compared with real rooms.</p>
 
-<p><strong>Wall.</strong> The wall view takes the wall template and the outside temperature from the room view and calculates a steady state with room air regulated at 20 °C (common assumption); it does not take the air temperature from the air flow in the room view. The heat transfer at the inner surface covers both air and radiation (common assumption). The wall is calculated layer by layer with steady heat conduction, each layer with its own thermal conductivity and a range. The outside edge comes from a two-dimensional heat conduction calculation done in advance for each wall template. From the room air temperature and humidity, the app calculates the dew point. From the inner surface temperature, it calculates the humidity at the surface.</p>
+<p><strong>Wall.</strong> The wall view takes the wall template and the outside temperature from the room view and calculates a settled state with room air regulated at 20 °C (common assumption); it does not take the air temperature from the air flow in the room view. The heat transfer at the inner surface covers both air and radiation (common assumption). The wall is calculated layer by layer with heat conduction in a settled state, each layer with its own thermal conductivity and a range. The outside edge comes from a two-dimensional heat conduction calculation done in advance for each wall template. From the room air temperature and humidity, the app calculates the dew point. From the inner surface temperature, it calculates the humidity at the surface.</p>
 
 
 <h2>Where the values come from</h2>
@@ -57,7 +57,7 @@ description: "How RoomXDynamics calculates: inputs, a 2D section, a result as a 
 
 <ul>
     <li>Two dimensions instead of three. Corners, roller shutter boxes and junctions in the room are missing.</li>
-    <li>Steady state: no daily cycle, no airing with open windows, no heat storage in the wall.</li>
+    <li>Settled state: no daily cycle, no airing with open windows, no heat storage in the wall.</li>
     <li>The wall is a template, not the real build-up of a particular house.</li>
     <li>The air movement is qualitative. The app does not derive statements about draughts in a real room from it.</li>
     <li>Swirls: single swirls come and go. What shows the trend is the overall direction of the air.</li>

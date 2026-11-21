@@ -27,8 +27,8 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
 <p>Die App rechnet zwei Dinge, getrennt voneinander:</p>
 
 <ul>
-    <li><strong>Wandoberflächen.</strong> Die Temperatur der Wandoberfläche ergibt sich aus stationärer Wärmeleitung durch die Wand, gerechnet als Fall mit üblichen Randbedingungen. An einer Außenkante wird zweidimensional gerechnet. Eine echte Raumecke ist meist kälter als diese Kante.</li>
-    <li><strong>Luft im Raum.</strong> Die Luftbewegung, etwa die Walze über dem Heizkörper oder kühle Luft, die am Fenster absinkt, ist ein zweidimensionales Bild. Echte Raumluft strömt in alle Richtungen und unruhiger als im Modell. Diese Schicht zeigt deshalb Mechanismen, keine Zahlen. Die Farben zeigen wärmere und kühlere Luft in groben Abstufungen auf einer festen °C-Skala, und sie folgen Änderungen ruhig; die Markierungen zeigen die Bewegung in diesem Moment.</li>
+    <li><strong>Wandoberflächen.</strong> Die Temperatur der Wandoberfläche ergibt sich aus Wärmeleitung im Dauerzustand durch die Wand, gerechnet als Fall mit üblichen Randbedingungen. An einer Außenkante wird zweidimensional gerechnet. Eine echte Raumecke ist meist kälter als diese Kante.</li>
+    <li><strong>Luft im Raum.</strong> Die Luftbewegung, etwa die Walze über dem Heizkörper oder kühle Luft, die am Fenster absinkt, ist ein zweidimensionales Bild. Echte Raumluft strömt in alle Richtungen und unruhiger als im Modell. Diese Schicht zeigt deshalb Mechanismen, keine Zahlen. Die Farben zeigen wärmere und kühlere Luft in groben Abstufungen auf einer festen °C-Skala. Sie zeigen ein kurzes Zeitmittel und folgen Änderungen deshalb leicht verzögert; die Markierungen zeigen die Bewegung in diesem Moment.</li>
 </ul>
 
 <h2>3. Das Ergebnis</h2>
@@ -39,9 +39,9 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
 
 <p><strong>Raumluft.</strong> Luftströmung und Temperatur sind gerechnet, nicht gezeichnet. Die App rechnet laufend, wie warme Luft über dem Heizkörper aufsteigt, wie kühle Luft am Fenster absinkt und wie die Luft um einen Vorhang oder ein Sofa zieht, in einem Schnitt durch die Raummitte, live auf dem iPhone. Vorhang und Sofa sind feste Hindernisse: Die Luft muss um sie herum, beim Vorhang geht nur wenig durch den Stoff.</p>
 
-<p><strong>Wie verlässlich es ist.</strong> Den Rechenkern der App haben wir an einem anerkannten Referenzfall aus der Fachliteratur geprüft, mit höherer Auflösung als in der Live-Ansicht. Das prüft den Rechenkern, nicht Ihren Raum: Die Live-Ansicht rechnet mit geringerer Auflösung, damit sie auf dem iPhone flüssig läuft, und echte Raumluft strömt in alle Richtungen und unruhiger als im Modell. Die Ansicht zeigt deshalb Tendenzen, keine Werte für Ihren Raum. Mit echten Räumen ist sie nicht verglichen.</p>
+<p><strong>Wie verlässlich es ist.</strong> Den Rechenkern für die Raumluft haben wir an einem anerkannten Referenzfall aus der Fachliteratur geprüft, mit höherer Auflösung als in der Live-Ansicht. Das prüft den Rechenkern, nicht die Live-Ansicht: Sie rechnet mit geringerer Auflösung, damit sie auf dem iPhone flüssig läuft, und echte Raumluft strömt in alle Richtungen und unruhiger als im Modell. Die Ansicht zeigt deshalb Tendenzen, keine Werte für Ihren Raum. Mit echten Räumen ist sie nicht verglichen.</p>
 
-<p><strong>Wand.</strong> Die Wandansicht übernimmt Wandvorlage und Außentemperatur aus der Raumansicht und rechnet einen Dauerzustand mit einer auf 20 °C geregelten Raumluft (übliche Annahme); die Lufttemperatur aus der Luftströmung der Raumansicht übernimmt sie nicht. Der Wärmeübergang an der Innenoberfläche umfasst Luft und Strahlung (übliche Annahme). Die Wand wird Schicht für Schicht mit stationärer Wärmeleitung gerechnet, jede Schicht mit eigener Wärmeleitfähigkeit und Bandbreite. Die Außenkante kommt aus einer vorab gerechneten zweidimensionalen Wärmeleitung je Wandvorlage. Aus Temperatur und Feuchte der Raumluft berechnet die App den Taupunkt, aus der Temperatur der Innenoberfläche die Feuchte an der Oberfläche.</p>
+<p><strong>Wand.</strong> Die Wandansicht übernimmt Wandvorlage und Außentemperatur aus der Raumansicht und rechnet einen Dauerzustand mit einer auf 20 °C geregelten Raumluft (übliche Annahme); die Lufttemperatur aus der Luftströmung der Raumansicht übernimmt sie nicht. Der Wärmeübergang an der Innenoberfläche umfasst Luft und Strahlung (übliche Annahme). Die Wand wird Schicht für Schicht mit Wärmeleitung im Dauerzustand gerechnet, jede Schicht mit eigener Wärmeleitfähigkeit und Bandbreite. Die Außenkante kommt aus einer vorab gerechneten zweidimensionalen Wärmeleitung je Wandvorlage. Aus Temperatur und Feuchte der Raumluft berechnet die App den Taupunkt, aus der Temperatur der Innenoberfläche die Feuchte an der Oberfläche.</p>
 
 
 <h2>Woher die Werte kommen</h2>
@@ -58,7 +58,7 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
 
 <ul>
     <li>Zwei statt drei Dimensionen. Ecken, Rollladenkästen und Anschlüsse im Raum fehlen.</li>
-    <li>Stationär: kein Tagesgang, kein Stoßlüften, keine Wärmespeicherung in der Wand.</li>
+    <li>Dauerzustand: kein Tagesgang, kein Stoßlüften, keine Wärmespeicherung in der Wand.</li>
     <li>Die Wand ist eine Vorlage, nicht der echte Aufbau eines bestimmten Hauses.</li>
     <li>Die Luftbewegung ist qualitativ. Die App leitet daraus keine Aussagen über Zugluft in einem echten Raum ab.</li>
     <li>Wirbel: Einzelne Wirbel kommen und gehen. Die Tendenz zeigt die Richtung der Luftbewegung.</li>
