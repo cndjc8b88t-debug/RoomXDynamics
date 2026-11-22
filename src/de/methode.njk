@@ -1,4 +1,5 @@
 ---
+moldNoteInText: true
 layout: base.njk
 title: "So funktioniert es"
 permalink: /de/methode/
@@ -10,7 +11,7 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
 
 <p class="lead">Eingaben, ein Schnitt durch den Raum, ein Ergebnis als Tendenz. Diese Seite erklärt, was gerechnet wird, was angenommen wird und wo das Modell aufhört.</p>
 
-<p class="lang-note">Die App gibt es auf Deutsch und Englisch, sie folgt der Sprache Ihres iPhones.</p>
+<p class="lang-note">Die App gibt es auf Deutsch und Englisch, sie folgt der Sprache deines iPhones.</p>
 
 <h2>Was gerechnet wird</h2>
 
@@ -20,7 +21,7 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
 
 <h2>1. Eingaben</h2>
 
-<p>In der Raumansicht wählen Sie Fenster, Wand, Heizkörper-Einstellung, Außentemperatur, Raumgröße und einen Vorhang oder ein Sofa an festen Positionen vor dem Fenster. In der Wandansicht wählen Sie Außentemperatur, relative Raumluftfeuchte und eine Wandvorlage (zum Beispiel eine ungedämmte oder eine außen gedämmte Wand). Die Ansicht zeigt das Ergebnis für die freie Fläche der Außenwand und in einer Zeile für die Außenkante.</p>
+<p>In der Raumansicht wählst du Fenster, Wand, Heizkörper-Einstellung, Außentemperatur, Raumgröße und einen Vorhang oder ein Sofa an festen Positionen vor dem Fenster. In der Wandansicht wählst du Außentemperatur, relative Raumluftfeuchte und eine Wandvorlage (zum Beispiel eine ungedämmte oder eine außen gedämmte Wand). Die Ansicht zeigt das Ergebnis für die freie Fläche der Außenwand und in einer Zeile für die Außenkante.</p>
 
 <h2>2. Der 2D-Schnitt</h2>
 
@@ -39,7 +40,7 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
 
 <p><strong>Raumluft.</strong> Luftströmung und Temperatur sind gerechnet, nicht gezeichnet. Die App rechnet laufend, wie warme Luft über dem Heizkörper aufsteigt, wie kühle Luft am Fenster absinkt und wie die Luft um einen Vorhang oder ein Sofa zieht, in einem Schnitt durch die Raummitte, live auf dem iPhone. Vorhang und Sofa sind feste Hindernisse: Die Luft muss um sie herum, beim Vorhang geht nur wenig durch den Stoff.</p>
 
-<p><strong>Wie verlässlich es ist.</strong> Den Rechenkern für die Raumluft haben wir an einem anerkannten Referenzfall aus der Fachliteratur geprüft, mit höherer Auflösung als in der Live-Ansicht. Das prüft den Rechenkern, nicht die Live-Ansicht: Sie rechnet mit geringerer Auflösung, damit sie auf dem iPhone flüssig läuft, und echte Raumluft strömt in alle Richtungen und unruhiger als im Modell. Die Ansicht zeigt deshalb Tendenzen, keine Werte für Ihren Raum. Mit echten Räumen ist sie nicht verglichen.</p>
+<p><strong>Wie verlässlich es ist.</strong> Den Rechenkern für die Raumluft haben wir an einem anerkannten Referenzfall aus der Fachliteratur geprüft, mit höherer Auflösung als in der Live-Ansicht. Das prüft den Rechenkern, nicht die Live-Ansicht: Sie rechnet mit geringerer Auflösung, damit sie auf dem iPhone flüssig läuft, und echte Raumluft strömt in alle Richtungen und unruhiger als im Modell. Die Ansicht zeigt deshalb Tendenzen, keine Werte für deinen Raum. Mit echten Räumen ist sie nicht verglichen.</p>
 
 <p><strong>Wand.</strong> Die Wandansicht übernimmt Wandvorlage und Außentemperatur aus der Raumansicht und rechnet einen Dauerzustand mit einer auf 20 °C geregelten Raumluft (übliche Annahme); die Lufttemperatur aus der Luftströmung der Raumansicht übernimmt sie nicht. Der Wärmeübergang an der Innenoberfläche umfasst Luft und Strahlung (übliche Annahme). Die Wand wird Schicht für Schicht mit Wärmeleitung im Dauerzustand gerechnet, jede Schicht mit eigener Wärmeleitfähigkeit und Bandbreite. Die Außenkante kommt aus einer vorab gerechneten zweidimensionalen Wärmeleitung je Wandvorlage. Aus Temperatur und Feuchte der Raumluft berechnet die App den Taupunkt, aus der Temperatur der Innenoberfläche die Feuchte an der Oberfläche.</p>
 
@@ -49,7 +50,7 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
 <p>Jede Zahl in der App ist gekennzeichnet:</p>
 
 <ul>
-    <li><strong>gerechnet</strong>: ein Ergebnis der Simulation aus Ihren Eingaben,</li>
+    <li><strong>gerechnet</strong>: ein Ergebnis der Simulation aus deinen Eingaben,</li>
     <li><strong>Übliche Annahme</strong>: ein verbreiteter Bemessungswert, zum Beispiel für den Wärmeübergang an Oberflächen,</li>
     <li><strong>Annahme des RoomXDynamics-Teams</strong>: ein Wert, den wir festgelegt haben, solange keine belastbare Quelle vorliegt. Die App sagt das dazu.</li>
 </ul>
@@ -67,4 +68,4 @@ description: "Wie RoomXDynamics rechnet: Eingaben, ein 2D-Schnitt, ein Ergebnis 
     <li>Die Wand hinter dem Heizkörper ist nicht gerechnet. Sie kann dort wärmer oder kälter sein als die freie Fläche der Wand, je nach Bauart.</li>
 </ul>
 
-<p class="notice">Wenn Sie Schimmel sehen: Lassen Sie die Wand vor Ort von einer Fachperson ansehen.</p>
+<p class="notice">Wenn du Schimmel siehst: Lass die Wand vor Ort von einer Fachperson ansehen.</p>

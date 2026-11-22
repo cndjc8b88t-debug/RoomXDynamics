@@ -1,0 +1,29 @@
+{#- Home page v2 (Larsson 22.11.2026): pictures per language, own files from each language build.
+    While site.v2Assets is false, a clearly marked placeholder stands in (no live push in that state). -#}
+{% macro bild(name, lang, alt, w1, w2, ratio, lazy=true) -%}
+{%- set h1 = (w1 / ratio) | round | int -%}
+{%- set base = "/assets/img/v2/" + name + "-" + lang -%}
+{%- if site.v2Assets -%}
+<picture>
+    <source type="image/webp" srcset="{{ base }}-{{ w1 }}.webp {{ w1 }}w, {{ base }}-{{ w2 }}.webp {{ w2 }}w" sizes="(min-width: 960px) {{ w1 }}px, 100vw">
+    <img class="bild" src="{{ base }}-{{ w1 }}.jpg" srcset="{{ base }}-{{ w1 }}.jpg {{ w1 }}w, {{ base }}-{{ w2 }}.jpg {{ w2 }}w" sizes="(min-width: 960px) {{ w1 }}px, 100vw" width="{{ w1 }}" height="{{ h1 }}"{% if lazy %} loading="lazy"{% endif %} decoding="async" alt="{{ alt }}">
+</picture>
+{%- else -%}
+<div class="platz" role="img" aria-label="{{ alt }}" style="aspect-ratio: {{ ratio }}">Placeholder {{ name }}-{{ lang }} (Mira)</div>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro clip(hero, lang, labels) -%}
+<div class="clip">
+{%- if hero.clip %}
+    <video id="hero-clip" autoplay muted loop playsinline preload="metadata"{% if hero.poster %} poster="{{ hero.poster }}"{% endif %} aria-label="{{ hero.alt }}">
+        <source src="{{ hero.clip }}" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
+    </video>
+    <button type="button" class="clip-toggle" id="clip-toggle" data-play="{{ labels.play }}" data-pause="{{ labels.pause }}" hidden>{{ labels.pause }}</button>
+{%- elif hero.poster %}
+    <img src="{{ hero.poster }}" width="1080" height="1080" alt="{{ hero.posterAlt }}">
+{%- else %}
+    <div class="platz" role="img" aria-label="{{ hero.alt }}" style="aspect-ratio: 1">Placeholder hero-{{ lang }} (Mira: A1 clip, A2 still)</div>
+{%- endif %}
+</div>
+{%- endmacro %}

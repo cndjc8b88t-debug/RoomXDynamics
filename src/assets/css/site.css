@@ -325,3 +325,140 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
     }
     .app-shots-row li { scroll-snap-align: start; }
 }
+
+/* ===================================================================
+   Website v2 (Larsson 22.11.2026). Header and footer: all pages.
+   Everything else only on the home page (body.home, K-1).
+   Blue and red are data: only in pictures, clip, legend and the
+   temperature sign, never as accent, link, button or decoration (F-1).
+   =================================================================== */
+:root {
+    --graphit: #16181c; --g-ink: #eef0f3; --g-muted: #a3a8b0; --g-line: #6b717b;
+    --g-hair: rgba(255, 255, 255, .08); --g-accent: #d9b98c;
+    --kuehl: #2B65A2; --warm: #E55745; --kuehl-g: #6AA9ED; --warm-g: #FFA192;
+    --gutter: 20px; --max: 1120px; --sec: 64px;
+}
+@media (prefers-color-scheme: dark) { :root { --kuehl: #6AA9ED; --warm: #FFA192; } }
+@media (prefers-contrast: more) { :root { --g-muted: #c9ccd2; } }
+@media (min-width: 600px) { :root { --gutter: 32px; --sec: 88px; } }
+@media (min-width: 960px) { :root { --gutter: 48px; --sec: 112px; } }
+
+/* K-2 header and K-3 footer: same height and width on every page */
+.site-header, .site-footer { max-width: calc(var(--max) + 2 * var(--gutter)); padding-left: var(--gutter); padding-right: var(--gutter); }
+.site-header { min-height: 64px; align-items: center; padding-top: 0; padding-bottom: 0; }
+.site-nav a, .lang-switch a { display: inline-block; padding: 12px 6px; }
+.site-footer { font-size: 14px; padding-top: 32px; padding-bottom: 48px; }
+.footer-nav a { padding: 12px 0; }
+.footer-note { margin: 12px 0 0; }
+
+/* Home: header on graphite, part of section 1, no rule */
+.home .site-header { max-width: none; border-bottom: 0; background: var(--graphit); color: var(--g-ink);
+    padding-left: max(var(--gutter), calc((100% - var(--max)) / 2)); padding-right: max(var(--gutter), calc((100% - var(--max)) / 2)); }
+.home .site-nav a, .home .lang-switch, .home .lang-sep { color: var(--g-muted); }
+.home .site-nav a:hover { color: var(--g-ink); }
+.home .lang-current { color: var(--g-ink); }
+.home main { max-width: none; padding: 0; }
+.home .wrap { max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Typography (home only) */
+.home h1, .home h2, .home h3, .home .kicker, .home .btn, .home figcaption, .home .legend, .home .clip-origin, .home .person { font-family: var(--sans); }
+.home h1 { font-size: clamp(40px, 6.4vw + 16px, 64px); line-height: 1.04; letter-spacing: -0.025em; font-weight: 700; margin: 0 0 20px; }
+.home h2 { font-size: clamp(30px, 3.2vw + 18px, 44px); line-height: 1.08; letter-spacing: -0.02em; font-weight: 700; margin: 0 0 16px; }
+.home h3 { font-size: 19px; line-height: 1.25; font-weight: 600; margin: 0 0 6px; }
+.home .kicker { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+.home .text { font-size: 18px; line-height: 1.6; max-width: var(--measure); margin: 0 0 24px; }
+.home .lead { font-family: var(--serif); font-size: 19px; line-height: 1.5; max-width: 30rem; margin: 0 0 28px; }
+@media (min-width: 960px) { .home .text { font-size: 19px; } .home .lead { font-size: 21px; } }
+.home .badge { font-family: var(--sans); font-size: 12px; white-space: nowrap; border-radius: 4px; padding: 2px 8px; }
+
+/* Graphite sections: 1 (entry) and 5 (trust) only, flat (F-2) */
+.home .g { background: var(--graphit); color: var(--g-ink); }
+.home .g .kicker, .home .g .store-note, .home .g .clip-origin, .home .g .lang-note, .home .g .person { color: var(--g-muted); }
+.home .g .badge { border-color: var(--g-line); color: var(--g-ink); }
+.home .g a { text-decoration-color: var(--g-line); }
+.home .g :focus-visible { outline-color: var(--g-accent); }
+@media (prefers-color-scheme: dark) { .home .g { border-block: 1px solid var(--g-hair); } .home .site-header { border-top: 1px solid var(--g-hair); } }
+
+/* 1 · Entry */
+.home .hero { padding-bottom: var(--sec); margin: 0; }
+.home .hero-grid { display: grid; gap: 28px; padding-top: 8px; }
+.home .hero-text { order: 2; }
+.home .hero-media { order: 1; }
+.home .clip { position: relative; aspect-ratio: 1 / 1; background: #1b1d22; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--g-hair); }
+.home .clip video, .home .clip img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.home .clip-toggle { position: absolute; right: 8px; top: 8px; min-width: 44px; min-height: 44px; border: 1px solid var(--g-line);
+    border-radius: 999px; background: rgba(22, 24, 28, .72); color: var(--g-ink); font: 600 13px var(--sans); padding: 0 14px; cursor: pointer; }
+.home .clip-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; margin: 12px 0 0; }
+.home .clip-origin { font-size: 13px; margin: 6px 0 0; }
+.home .actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 16px; }
+.home .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; font-size: 16px; font-weight: 600; text-decoration: none; border: 1px solid transparent; background: var(--g-ink); color: var(--graphit); }
+.home .btn-secondary { background: transparent; border-color: var(--g-line); color: var(--g-ink); }
+.home .store-note { font-size: 14px; margin: 0; }
+.home .lang-note { font-family: var(--sans); font-size: 14px; font-weight: 400; margin: 6px 0 0; }
+@media (min-width: 600px) { .home .hero-media { max-width: 560px; margin: 0 auto; width: 100%; } }
+@media (min-width: 960px) {
+    .home .hero-grid { grid-template-columns: 4fr 8fr; gap: 24px 48px; align-items: center; padding-top: 24px; }
+    .home .hero-text, .home .hero-media { order: 0; }
+    .home .hero-media { max-width: none; margin: 0; }
+    .home .clip, .home .clip-meta, .home .clip-origin { max-width: min(100%, calc(100vh - 170px)); margin-left: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .home .clip-toggle { display: none; } }
+
+/* Legend: meaning, no number; words at both ends are the second coding */
+.home .legend { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.home .legend .scale, .home .sign-temp { display: block; width: 96px; height: 8px; border-radius: 4px;
+    background: linear-gradient(90deg, var(--kuehl), var(--paper) 50%, var(--warm)); box-shadow: inset 0 0 0 1px var(--rule); }
+.home .g .legend { color: var(--g-muted); }
+.home .g .legend .scale { background: linear-gradient(90deg, var(--kuehl-g), var(--graphit) 50%, var(--warm-g)); box-shadow: inset 0 0 0 1px var(--g-line); }
+
+/* Light sections */
+.home .ab { padding: var(--sec) 0; }
+.home .ab + .ab { border-top: 1px solid var(--rule); }
+.home figure { margin: 0; }
+.home figcaption { font-size: 15px; color: var(--muted); margin-top: 10px; line-height: 1.4; }
+.home figcaption strong { color: var(--ink); display: block; }
+.home .bild { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--rule); background: var(--card); }
+.home .platz { width: 100%; border: 2px dashed var(--control); border-radius: 12px; display: grid; place-items: center; text-align: center;
+    padding: 24px; font: 15px/1.5 var(--sans); color: var(--muted); background: var(--sunken); }
+
+/* 2 · Experiment: pair over the full width, label above the picture */
+.home .pair { display: grid; gap: 24px; margin-top: 32px; }
+.home .pair figcaption { margin: 0 0 8px; }
+@media (min-width: 720px) { .home .pair { grid-template-columns: 1fr 1fr; } }
+.home .pair-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 16px; color: var(--muted); font: 14px/1.4 var(--sans); }
+
+/* 3 · Wall: picture 8 columns left, text 4 right */
+.home .split { display: grid; gap: 24px; grid-template-areas: "kopf" "bild" "rest"; }
+.home .split .kopf { grid-area: kopf; } .home .split .bild-f { grid-area: bild; } .home .split .rest { grid-area: rest; }
+@media (min-width: 960px) {
+    .home .split { grid-template-columns: 8fr 4fr; gap: 0 48px; grid-template-areas: "bild kopf" "bild rest"; align-items: start; }
+    .home .split .kopf { align-self: end; }
+}
+.home .levels { padding-left: 1.4rem; margin: 0 0 20px; font: 16px/1.45 var(--sans); }
+.home .levels li { margin-bottom: 10px; }
+.home .levels strong { display: block; }
+
+/* 4 · Substance: picture centred, three tiles in a fixed order */
+.home .gross { max-width: 760px; margin: 32px auto 0; }
+.home .tiles { display: grid; gap: 16px; margin-top: 40px; }
+@media (min-width: 720px) { .home .tiles { grid-template-columns: repeat(3, 1fr); } }
+.home .tile { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; }
+.home .tile p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--muted); }
+.home .sign { display: block; height: 8px; margin-bottom: 16px; }
+.home .sign-air { width: 64px; height: 3px; margin-top: 3px; border-radius: 4px; background: repeating-linear-gradient(90deg, var(--control) 0 10px, transparent 10px 16px); }
+.home .sign-wall { width: 64px; border-radius: 2px; background: linear-gradient(90deg, var(--rule) 0 30%, var(--control) 30% 70%, var(--sunken) 70%); }
+
+/* 5 · Trust (graphite): the statement is the picture */
+.home .trust { padding: var(--sec) 0; }
+.home .trust .kicker { font-size: 13px; letter-spacing: .12em; }
+.home .statement { font: clamp(26px, 1.6vw + 20px, 36px)/1.3 var(--serif); max-width: 44rem; margin: 0 0 24px; }
+.home .g .text { color: #c9ccd2; }
+.home .person { font-size: 15px; line-height: 1.5; margin: 0; }
+
+/* 6 · More */
+.home .more { display: grid; gap: 16px; margin-top: 24px; }
+@media (min-width: 720px) { .home .more { grid-template-columns: 1fr 1fr; max-width: 760px; } }
+.home .more-card { display: block; padding: 20px 22px; background: var(--card); border: 1px solid var(--rule); border-radius: 12px; text-decoration: none; font-family: var(--sans); }
+.home .more-card:hover { border-color: var(--control); }
+.home .more-card h3 { margin: 0 0 4px; font-size: 18px; }
+.home .more-card p { margin: 0; color: var(--muted); font-size: 15px; }

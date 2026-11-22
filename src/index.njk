@@ -1,89 +1,92 @@
 ---
 layout: base.njk
 alt: "/de/"
-description: "How warm and cool air moves in a room and how cool its walls get, in the model: a qualitative simulation for iPhone."
+description: "See how warm and cool air moves in a room and how cool its walls get, in the model: a qualitative simulation for iPhone."
+bodyClass: home
 ---
-
-<h1>See room climate in section.</h1>
-
-<p class="lang-note">The app comes in German and English and follows the language of your iPhone.</p>
-
-{% if site.heroClip %}
-<figure class="hero">
-    <video id="hero-clip" muted playsinline preload="none" poster="{{ site.heroPoster }}" aria-label="{{ site.heroAlt }}">
-        <source src="{{ site.heroClip }}" type="video/mp4">
-    </video>
-    <button type="button" class="hero-play" id="hero-play">Play</button>
-</figure>
-{% endif %}
-<p class="hero-badge"><span class="badge">2D simulation · qualitative</span></p>
-<p class="hero-line">Calculated, not drawn: air flow and temperature in a section through the room, and heat conduction through the wall, layer by layer. Carefully built physics, live on your iPhone.</p>
-<p class="hero-line">It shows trends, not values for your room. <a href="/method/">How it works</a></p>
-
-<p class="lead">RoomXDynamics is a simulation for iPhone. It shows a section through a room with an outside wall and a window: how warm and cool air move through the room and how cool the wall surface gets.</p>
-
-<div class="cards" id="cards">
-    <section class="card" data-card="air">
-        <h2>Air in the room</h2>
-        <ul>
-            <li>How a radiator sets the room air moving</li>
-            <li>How warm and cool air circulate in a section through a room</li>
-        </ul>
-        <span class="badge">2D simulation · qualitative</span>
-    </section>
-    <section class="card" data-card="mould">
-        <h2>Cool walls and mold</h2>
-        <ul>
-            <li>Where walls get critically cool in the model</li>
-        </ul>
-        <span class="badge">Wall · heat conduction · 3 risk levels</span>
-    </section>
+{% from "v2macros.njk" import bild, clip %}
+<section class="g hero" aria-labelledby="claim">
+<div class="wrap hero-grid">
+    <div class="hero-text">
+        <p class="kicker">Room climate simulation for iPhone</p>
+        <h1 id="claim">See what moves a room.</h1>
+        <p class="lead">How warm air rises, cool air sinks at the window and how cool the wall gets on the inside. Rearrange the room and watch what happens. Calculated live on your iPhone.</p>
+        <p class="actions"><a class="btn" href="#experiment">See the simulation</a> <a class="btn btn-secondary" href="/method/">The physics inside</a></p>
+        <p class="store-note">Free. Not yet available on the App Store.{% if site.social.length %} Follow RoomXDynamics on {% for s in site.social %}<a href="{{ s.url }}">{{ s.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% endif %} Questions: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+        <p class="lang-note">The app comes in German and English and follows the language of your iPhone.</p>
+    </div>
+    <div class="hero-media">
+        {{ clip(site.hero, "en", { play: "Play", pause: "Pause" }) }}
+        <p class="clip-meta"><span class="badge">2D simulation · qualitative</span> <span class="legend"><span>cooler</span> <span class="scale" aria-hidden="true"></span> <span>warmer</span></span></p>
+        <p class="clip-origin">Recorded in the app, not drawn.</p>
+    </div>
 </div>
-<script>
-// Random order of the equal-ranked cards on each visit, one card per view. No cookie, no storage, nothing is sent.
-(function () {
-    var c = document.getElementById("cards");
-    if (!c) { return; }
-    var k = Array.prototype.slice.call(c.children);
-    for (var i = k.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var t = k[i]; k[i] = k[j]; k[j] = t;
-    }
-    k.forEach(function (e) { c.appendChild(e); });
-})();
-// Hero clip: plays only on request, once, no loop. Nothing is stored or sent.
-(function () {
-    var v = document.getElementById("hero-clip"), b = document.getElementById("hero-play");
-    if (!v || !b) { return; }
-    b.addEventListener("click", function () { v.currentTime = 0; v.play(); b.hidden = true; });
-    v.addEventListener("ended", function () { b.textContent = "Play again"; b.hidden = false; });
-})();
-</script>
+</section>
 
-<p class="store-note">Free. Not yet available on the App Store.{% if site.social.length %} Follow RoomXDynamics on {% for s in site.social %}<a href="{{ s.url }}">{{ s.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% endif %} Questions: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+<section class="ab" aria-labelledby="experiment">
+<div class="wrap">
+    <p class="kicker">Experiment</p>
+    <h2 id="experiment">What does a curtain change?</h2>
+    <p class="text">The same room, the same cold outside. Only a curtain is added, and the air at the window takes a different path.</p>
+    <div class="pair">
+        <figure><figcaption><strong>Without a curtain</strong> The warm air from the radiator rises along the window.</figcaption>{{ bild("exp-ohne-vorhang", "en", "Room view without a curtain: a radiator below the window, warm air rising along the glass toward the ceiling, in the model.", 560, 1120, 0.95) }}</figure>
+        <figure><figcaption><strong>With a curtain</strong> Behind the fabric, cool air sinks along the glass and falls into the room below the hem. There the warm air turns into the room.</figcaption>{{ bild("exp-mit-vorhang", "en", "The same room view with a curtain down to the windowsill: cool air sinking between curtain and glass, and below the hem the warm air from the radiator turning into the room, in the model.", 560, 1120, 0.95) }}</figure>
+    </div>
+    <p class="pair-meta"><span class="badge">2D simulation · qualitative</span> <span class="legend"><span>cooler</span> <span class="scale" aria-hidden="true"></span> <span>warmer</span></span> Both pictures use the same fixed color scale.</p>
+</div>
+</section>
 
-<h2>A curtain at the window?</h2>
-<p>See how the curtain changes the air at the window.</p>
+<section class="ab" aria-labelledby="wall">
+<div class="wrap split">
+    <div class="kopf">
+        <p class="kicker">Wall view</p>
+        <h2 id="wall">How cool does the wall get?</h2>
+    </div>
+    <figure class="bild-f">{{ bild("wand", "en", "Wall view: a section through the outside wall with the temperature line from inside to outside, the mold risk and dew point lines and the level below, in the model.", 760, 1520, 1.3333) }}<figcaption>The outside wall in section: mold risk in three levels.</figcaption></figure>
+    <div class="rest">
+        <p class="text">The second view cuts through the outside wall. You see how the temperature drops from inside to outside and how damp the surface gets. From that, it shows the mold risk in three levels:</p>
+        <ol class="levels">
+            <li><strong>low</strong> The wall stays warm on the inside; in the model, the surface hardly gets damp.</li>
+            <li><strong>elevated</strong> The wall gets cooler, and the surface gets damp enough for some kinds of mold.</li>
+            <li><strong>high</strong> The wall is so cool on the inside that the surface gets damp enough for many kinds of mold, if it stays this cold for a long time.</li>
+        </ol>
+        <p class="text">Choose a wall insulated on the outside, and the inside gets warmer. Lower the room humidity, and the mold risk line moves down. The level follows at once.</p>
+        <p><span class="badge">Wall · heat conduction · 3 risk levels</span></p>
+    </div>
+</div>
+</section>
 
-<h2>A sofa under the window?</h2>
-<p>See how the sofa changes the air at the radiator.</p>
+<section class="ab" aria-labelledby="physik">
+<div class="wrap">
+    <p class="kicker">What is calculated</p>
+    <h2 id="physik">Calculated live on your iPhone.</h2>
+    <p class="text">Behind every picture is a calculation, not an animation. The app works out three things for you:</p>
+    <figure class="gross">{{ bild("substanz-sofa", "en", "Room view: a sofa below the window, open underneath, and the air between sofa and radiator, in the model.", 760, 1520, 0.95) }}<figcaption>A sofa below the window, open underneath: how does the air move in the model?</figcaption></figure>
+    <div class="tiles">
+        <section class="tile"><span class="sign sign-air" aria-hidden="true"></span><h3>Air flow</h3><p>How warm air rises above the radiator, cool air sinks at the window, and air moves around curtain and sofa.</p></section>
+        <section class="tile"><span class="sign sign-temp" aria-hidden="true"></span><h3>Temperature</h3><p>Where the air in the room is warmer or cooler, and what changes when you rearrange something.</p></section>
+        <section class="tile"><span class="sign sign-wall" aria-hidden="true"></span><h3>Heat conduction</h3><p>How heat flows through the wall layer by layer and how warm the inside stays.</p></section>
+    </div>
+</div>
+</section>
 
-{% set lang = "en" %}{% include "appshots.njk" %}
+<section class="g trust" aria-labelledby="reliable">
+<div class="wrap">
+    <h2 class="kicker" id="reliable">How reliable it is</h2>
+    <p class="statement">We checked the calculation core for the room air against a recognized reference case from the technical literature.</p>
+    <p class="text">That checks the calculation core, not the view on your iPhone: it shows trends in the model, not values for your room.</p>
+    <p class="text"><a href="/method/">How it works</a>: what is calculated and where the model stops.</p>
+    <p class="person">Developed by Dr.-Ing. Jürgen Grönner.</p>
+</div>
+</section>
 
-<h2>What you see</h2>
-
-<p>Each view is a section through a room with an outside wall and a window. You change a few inputs and watch how the picture shifts in the model.</p>
-
-<ul>
-    <li><strong>Air in the room.</strong> A radiator below the window. Colors show warmer and cooler air on a fixed °C scale, as a trend, not degree by degree. Short strokes show which way the air moves, tinted warm or cool. You choose the window, the wall, the radiator setting, the outside temperature, the room size and a curtain or a sofa in front of the window.</li>
-    <li><strong>Cool walls and mold.</strong> The temperature of the inner wall surface and a risk estimate in three levels, with a range, for the open area of the outside wall and, in one line, for the outside edge. You choose the outdoor temperature, the humidity in the room and the wall. A real room corner is usually colder than this edge.</li>
-</ul>
-
-<h2>How it is calculated</h2>
-
-<p>The wall is calculated with heat conduction in a settled state from common design values; the air is a 2D flow simulation, shown qualitatively. The details are on the <a href="/method/">method</a> page, short answers under <a href="/faq/">questions and answers</a>.</p>
-
-<p class="notice">If you can see mold: have the wall looked at on site by a professional.</p>
-
-<hr>
-
+<section class="ab" aria-labelledby="more">
+<div class="wrap">
+    <h2 id="more">Want to know more?</h2>
+    <div class="more">
+        <a class="more-card" href="/method/"><h3>How it works</h3><p>What is calculated, what is assumed and where the model stops.</p></a>
+        <a class="more-card" href="/faq/"><h3>Questions and answers</h3><p>Short answers, privacy included.</p></a>
+    </div>
+</div>
+</section>
+{% include "clipscript.njk" %}

@@ -27,7 +27,7 @@ The privacy information on the App Store says the same: no data collected.
 
 ## This website
 
-This website has no cookies, no analytics, no tracking pixels and no embedded content from third parties. The site uses your device's built-in fonts; nothing is loaded from a third-party font service. There is no form that sends data to a server. A small script on the home page only changes the order of the cards and starts the video on request; it stores nothing and sends nothing.
+This website has no cookies, no analytics, no tracking pixels and no embedded content from third parties. The site uses your device's built-in fonts; nothing is loaded from a third-party font service. There is no form that sends data to a server. A small script on the home page pauses the clip when you tap “Pause” or scroll it out of view, and lets it play again; it stores nothing and sends nothing.
 
 The site is hosted on GitHub Pages, a service provided by GitHub B.V., Prins Bernhardplein 200, 1097 JB Amsterdam, Netherlands, and GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA. When you visit, the host's servers automatically process technical data your browser sends, such as your IP address, the date and time of the request, the page requested and your browser type, in server log files. This is necessary to deliver the site and keep it secure. The legal basis is Art. 6(1)(f) GDPR; our legitimate interest is the secure and reliable operation of the website.
 

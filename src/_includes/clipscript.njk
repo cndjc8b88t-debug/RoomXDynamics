@@ -1,0 +1,19 @@
+<script>
+// Hero clip (Larsson C-2 to C-5): pause/play button, pause when out of view, nothing with reduced motion.
+// No cookie, no storage, nothing is sent.
+(function () {
+    var v = document.getElementById("hero-clip"), b = document.getElementById("clip-toggle");
+    if (!v || !b) { return; }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { v.removeAttribute("autoplay"); v.pause(); return; }
+    var held = false;
+    function label() { b.textContent = v.paused ? b.getAttribute("data-play") : b.getAttribute("data-pause"); }
+    b.hidden = false;
+    b.addEventListener("click", function () { if (v.paused) { held = false; v.play(); } else { held = true; v.pause(); } });
+    v.addEventListener("play", label); v.addEventListener("pause", label); label();
+    if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (e) {
+            if (e[0].isIntersecting) { if (!held) { v.play().catch(label); } } else { v.pause(); }
+        }, { threshold: 0.25 }).observe(v);
+    }
+})();
+</script>

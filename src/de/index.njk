@@ -4,89 +4,92 @@ permalink: /de/
 alt: "/"
 title: ""
 seoTitle: "RoomXDynamics · Raumluft und Wände als Simulation für iPhone"
-description: "Wie sich warme und kühle Luft im Raum bewegt und wie kühl die Wände werden, im Modell: eine qualitative Simulation für iPhone."
+description: "Sieh, wie sich warme und kühle Luft im Raum bewegt und wie kühl die Wände werden, im Modell: eine qualitative Simulation für iPhone."
+bodyClass: home
 ---
-
-<h1>Raumklima im Schnitt sehen.</h1>
-
-<p class="lang-note">Die App gibt es auf Deutsch und Englisch, sie folgt der Sprache Ihres iPhones.</p>
-
-{% if site.heroClip %}
-<figure class="hero">
-    <video id="hero-clip" muted playsinline preload="none" poster="{{ site.heroPoster }}" aria-label="Ein Schnitt durch einen Raum in RoomXDynamics: ein Heizkörper unter dem Fenster und die Raumluft, im Modell.">
-        <source src="{{ site.heroClip }}" type="video/mp4">
-    </video>
-    <button type="button" class="hero-play" id="hero-play" data-again="Noch einmal abspielen">Abspielen</button>
-</figure>
-{% endif %}
-<p class="hero-badge"><span class="badge">2D-Simulation · qualitativ</span></p>
-<p class="hero-line">Gerechnet, nicht gezeichnet: Luftströmung und Temperatur in einem Schnitt durch den Raum und Wärmeleitung durch die Wand, Schicht für Schicht. Sorgfältig gebaute Physik, live auf Ihrem iPhone.</p>
-<p class="hero-line">Es zeigt Tendenzen, keine Werte für Ihren Raum. <a href="/de/methode/">So funktioniert es</a></p>
-
-<p class="lead">RoomXDynamics ist eine Simulation für iPhone. Sie zeigt einen Schnitt durch einen Raum mit Außenwand und Fenster: wie sich warme und kühle Luft durch den Raum bewegt und wie kühl die Wandoberfläche wird.</p>
-
-<div class="cards" id="cards">
-    <section class="card" data-card="air">
-        <h2>Luft im Raum</h2>
-        <ul>
-            <li>Wie ein Heizkörper die Raumluft in Bewegung setzt</li>
-            <li>Wie warme und kühle Luft in einem Schnitt durch den Raum zirkuliert</li>
-        </ul>
-        <span class="badge">2D-Simulation · qualitativ</span>
-    </section>
-    <section class="card" data-card="mould">
-        <h2>Kühle Wände und Schimmel</h2>
-        <ul>
-            <li>Wo Wände im Modell kritisch kühl werden</li>
-        </ul>
-        <span class="badge">Wand · Wärmeleitung · 3 Risikostufen</span>
-    </section>
+{% from "v2macros.njk" import bild, clip %}
+<section class="g hero" aria-labelledby="claim">
+<div class="wrap hero-grid">
+    <div class="hero-text">
+        <p class="kicker">Raumklima-Simulation für iPhone</p>
+        <h1 id="claim">Sieh, was einen Raum bewegt.</h1>
+        <p class="lead">Wie warme Luft aufsteigt, kühle Luft am Fenster absinkt und wie kühl die Wand innen wird. Stell den Raum um und sieh zu, was passiert. Live berechnet auf deinem iPhone.</p>
+        <p class="actions"><a class="btn" href="#experiment">Simulation ansehen</a> <a class="btn btn-secondary" href="/de/methode/">Die Physik dahinter</a></p>
+        <p class="store-note">Kostenlos. Noch nicht im App Store erhältlich.{% if site.social.length %} Folge RoomXDynamics auf {% for s in site.social %}<a href="{{ s.url }}">{{ s.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% endif %} Fragen: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+        <p class="lang-note">Die App gibt es auf Deutsch und Englisch, sie folgt der Sprache deines iPhones.</p>
+    </div>
+    <div class="hero-media">
+        {{ clip(hero, "de", { play: "Abspielen", pause: "Anhalten" }) }}
+        <p class="clip-meta"><span class="badge">2D-Simulation · qualitativ</span> <span class="legend"><span>kühler</span> <span class="scale" aria-hidden="true"></span> <span>wärmer</span></span></p>
+        <p class="clip-origin">Aufnahme aus der App, nicht nachgezeichnet.</p>
+    </div>
 </div>
-<script>
-// Zufällige Reihenfolge der gleichrangigen Karten bei jedem Besuch, eine Karte je Ansicht. Kein Cookie, kein Speicher, es wird nichts gesendet.
-(function () {
-    var c = document.getElementById("cards");
-    if (!c) { return; }
-    var k = Array.prototype.slice.call(c.children);
-    for (var i = k.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var t = k[i]; k[i] = k[j]; k[j] = t;
-    }
-    k.forEach(function (e) { c.appendChild(e); });
-})();
-// Video: startet nur auf Wunsch, einmal, ohne Schleife. Es wird nichts gespeichert oder gesendet.
-(function () {
-    var v = document.getElementById("hero-clip"), b = document.getElementById("hero-play");
-    if (!v || !b) { return; }
-    b.addEventListener("click", function () { v.currentTime = 0; v.play(); b.hidden = true; });
-    v.addEventListener("ended", function () { b.textContent = b.getAttribute("data-again"); b.hidden = false; });
-})();
-</script>
+</section>
 
-<p class="store-note">Kostenlos. Noch nicht im App Store erhältlich.{% if site.social.length %} Folgen Sie RoomXDynamics auf {% for s in site.social %}<a href="{{ s.url }}">{{ s.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% endif %} Fragen: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+<section class="ab" aria-labelledby="experiment">
+<div class="wrap">
+    <p class="kicker">Experiment</p>
+    <h2 id="experiment">Was verändert ein Vorhang?</h2>
+    <p class="text">Derselbe Raum, dieselbe Kälte draußen. Nur ein Vorhang kommt dazu, und die Luft am Fenster nimmt einen anderen Weg.</p>
+    <div class="pair">
+        <figure><figcaption><strong>Ohne Vorhang</strong> Die warme Luft vom Heizkörper steigt am Fenster auf.</figcaption>{{ bild("exp-ohne-vorhang", "de", "Raumansicht ohne Vorhang: ein Heizkörper unter dem Fenster, darüber steigt warme Luft an der Scheibe entlang zur Decke, im Modell.", 560, 1120, 0.95) }}</figure>
+        <figure><figcaption><strong>Mit Vorhang</strong> Hinter dem Stoff sinkt kühle Luft am Glas ab und fällt unter dem Saum in den Raum. Die warme Luft biegt dort in den Raum ab.</figcaption>{{ bild("exp-mit-vorhang", "de", "Dieselbe Raumansicht mit einem Vorhang bis zur Fensterbank: zwischen Vorhang und Glas sinkt kühle Luft ab, unter dem Saum biegt die warme Luft vom Heizkörper in den Raum ab, im Modell.", 560, 1120, 0.95) }}</figure>
+    </div>
+    <p class="pair-meta"><span class="badge">2D-Simulation · qualitativ</span> <span class="legend"><span>kühler</span> <span class="scale" aria-hidden="true"></span> <span>wärmer</span></span> Beide Bilder mit derselben festen Farbskala.</p>
+</div>
+</section>
 
-<h2>Ein Vorhang am Fenster?</h2>
-<p>Sehen Sie, wie der Vorhang die Luft am Fenster verändert.</p>
+<section class="ab" aria-labelledby="wand">
+<div class="wrap split">
+    <div class="kopf">
+        <p class="kicker">Wandansicht</p>
+        <h2 id="wand">Wie kühl wird die Wand?</h2>
+    </div>
+    <figure class="bild-f">{{ bild("wand", "de", "Wandansicht: ein Schnitt durch die Außenwand mit der Temperaturlinie von innen nach außen, den Linien für Schimmelrisiko und Taupunkt und der Stufe darunter, im Modell.", 760, 1520, 1.3333) }}<figcaption>Die Außenwand im Schnitt: Schimmelrisiko in drei Stufen.</figcaption></figure>
+    <div class="rest">
+        <p class="text">Die zweite Ansicht schneidet durch die Außenwand. Du siehst, wie die Temperatur von innen nach außen abfällt und wie feucht es an der Oberfläche wird. Daraus zeigt sie das Schimmelrisiko in drei Stufen:</p>
+        <ol class="levels">
+            <li><strong>gering</strong> Die Wand bleibt innen warm, an der Oberfläche wird es im Modell kaum feucht.</li>
+            <li><strong>erhöht</strong> Die Wand wird kühler, die Oberfläche wird feucht genug für einzelne Schimmelpilze.</li>
+            <li><strong>hoch</strong> Die Wand ist innen so kühl, dass die Oberfläche feucht genug für viele Schimmelpilze wird, wenn es lange so kalt bleibt.</li>
+        </ol>
+        <p class="text">Wähle eine außen gedämmte Wand, und die Innenseite wird wärmer. Senke die Raumluftfeuchte, und die Linie für das Schimmelrisiko rückt nach unten. Die Stufe folgt sofort.</p>
+        <p><span class="badge">Wand · Wärmeleitung · 3 Risikostufen</span></p>
+    </div>
+</div>
+</section>
 
-<h2>Ein Sofa unter dem Fenster?</h2>
-<p>Sehen Sie, wie das Sofa die Luft am Heizkörper verändert.</p>
+<section class="ab" aria-labelledby="physik">
+<div class="wrap">
+    <p class="kicker">Was gerechnet wird</p>
+    <h2 id="physik">Live berechnet auf deinem iPhone.</h2>
+    <p class="text">Hinter jedem Bild steckt eine Rechnung, keine Animation. Drei Dinge rechnet die App für dich:</p>
+    <figure class="gross">{{ bild("substanz-sofa", "de", "Raumansicht: ein Sofa unter dem Fenster, unten offen, und die Luft zwischen Sofa und Heizkörper, im Modell.", 760, 1520, 0.95) }}<figcaption>Ein Sofa unter dem Fenster, unten offen: Wie zieht die Luft im Modell?</figcaption></figure>
+    <div class="tiles">
+        <section class="tile"><span class="sign sign-air" aria-hidden="true"></span><h3>Luftströmung</h3><p>Wie warme Luft über dem Heizkörper aufsteigt, kühle am Fenster absinkt und um Vorhang und Sofa zieht.</p></section>
+        <section class="tile"><span class="sign sign-temp" aria-hidden="true"></span><h3>Temperatur</h3><p>Wo die Luft im Raum wärmer oder kühler ist und was sich ändert, wenn du etwas umstellst.</p></section>
+        <section class="tile"><span class="sign sign-wall" aria-hidden="true"></span><h3>Wärmeleitung</h3><p>Wie Wärme Schicht für Schicht durch die Wand fließt und wie warm die Innenseite bleibt.</p></section>
+    </div>
+</div>
+</section>
 
-{% set lang = "de" %}{% include "appshots.njk" %}
+<section class="g trust" aria-labelledby="verlaesslich">
+<div class="wrap">
+    <h2 class="kicker" id="verlaesslich">Wie verlässlich es ist</h2>
+    <p class="statement">Den Rechenkern für die Raumluft haben wir an einem anerkannten Referenzfall aus der Fachliteratur geprüft.</p>
+    <p class="text">Das prüft den Rechenkern, nicht die Ansicht auf dem iPhone: Sie zeigt Tendenzen im Modell, keine Werte für deinen Raum.</p>
+    <p class="text"><a href="/de/methode/">So funktioniert es</a>: was gerechnet ist und wo das Modell aufhört.</p>
+    <p class="person">Entwickelt von Dr.-Ing. Jürgen Grönner.</p>
+</div>
+</section>
 
-<h2>Was Sie sehen</h2>
-
-<p>Jede Ansicht ist ein Schnitt durch einen Raum mit Außenwand und Fenster. Sie ändern ein paar Eingaben und sehen, wie sich das Bild im Modell verändert.</p>
-
-<ul>
-    <li><strong>Luft im Raum.</strong> Ein Heizkörper unter dem Fenster. Die Farben zeigen wärmere und kühlere Luft auf einer festen °C-Skala, als Tendenz, nicht Grad für Grad. Kurze Striche zeigen, wohin die Luft zieht, warm oder kühl getönt. Sie wählen Fenster, Wand, Heizkörper-Einstellung, Außentemperatur, Raumgröße und einen Vorhang oder ein Sofa vor dem Fenster.</li>
-    <li><strong>Kühle Wände und Schimmel.</strong> Die Temperatur der inneren Wandoberfläche und eine Risiko-Einschätzung in drei Stufen mit Bandbreite, für die freie Fläche der Außenwand und in einer Zeile für die Außenkante. Sie wählen Außentemperatur, Raumluftfeuchte und Wand. Eine echte Raumecke ist meist kälter als diese Kante.</li>
-</ul>
-
-<h2>So wird gerechnet</h2>
-
-<p>Die Wand wird mit Wärmeleitung im Dauerzustand aus gängigen Bemessungswerten gerechnet, die Luft als 2D-Strömungssimulation, qualitativ dargestellt. Die Einzelheiten stehen auf der Seite <a href="/de/methode/">So funktioniert es</a>, kurze Antworten unter <a href="/de/fragen/">Fragen und Antworten</a>.</p>
-
-<p class="notice">Wenn Sie Schimmel sehen: Lassen Sie die Wand vor Ort von einer Fachperson ansehen.</p>
-
-<hr>
-
+<section class="ab" aria-labelledby="mehr">
+<div class="wrap">
+    <h2 id="mehr">Mehr wissen?</h2>
+    <div class="more">
+        <a class="more-card" href="/de/methode/"><h3>So funktioniert es</h3><p>Was gerechnet ist, was angenommen ist und wo das Modell aufhört.</p></a>
+        <a class="more-card" href="/de/fragen/"><h3>Fragen und Antworten</h3><p>Kurze Antworten, auch zum Datenschutz.</p></a>
+    </div>
+</div>
+</section>
+{% include "clipscript.njk" %}
