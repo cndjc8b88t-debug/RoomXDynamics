@@ -3,8 +3,8 @@
   "ogImageAlt": "RoomXDynamics: Raumluft und Wände im Schnitt. Eine qualitative Simulation für iPhone.",
   "ogImage": "/assets/img/og-card-de.png",
   "hero": {
-    "clip": null,
-    "poster": null,
+    "clip": "/assets/video/hero-de.mp4",
+    "poster": "/assets/video/hero-de-poster.jpg",
     "alt": "Aufnahme aus RoomXDynamics: ein Schnitt durch einen Raum mit Heizkörper unter dem Fenster. Der Regler wandert von „Raum“ zu „Luft“ und zurück, dabei tritt die warme und kühle Luft in Farbe hervor, im Modell.",
     "posterAlt": "Standbild aus RoomXDynamics: ein Schnitt durch einen Raum mit Heizkörper unter dem Fenster, der Regler in der Mitte zwischen „Raum“ und „Luft“, warme und kühle Luft in Farbe, im Modell."
   }

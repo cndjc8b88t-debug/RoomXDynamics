@@ -12,10 +12,10 @@
   "contactEmail": "support@roomxdynamics.com",
   "privacyEmail": "legal@roomxdynamics.com",
   "language": "en",
-  "v2Assets": false,
+  "v2Assets": true,
   "hero": {
-    "clip": null,
-    "poster": null,
+    "clip": "/assets/video/hero-en.mp4",
+    "poster": "/assets/video/hero-en-poster.jpg",
     "alt": "Recorded in RoomXDynamics: a section through a room with a radiator below the window. The slider moves from “Room” to “Air” and back, and the warm and cool air comes forward in color, in the model.",
     "posterAlt": "Still from RoomXDynamics: a section through a room with a radiator below the window, the slider halfway between “Room” and “Air”, warm and cool air in color, in the model."
   },
