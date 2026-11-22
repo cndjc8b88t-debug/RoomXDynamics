@@ -386,9 +386,11 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 .home .hero-media { order: 1; }
 .home .clip { position: relative; aspect-ratio: 1 / 1; background: #1b1d22; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--g-hair); }
 .home .clip video, .home .clip img { display: block; width: 100%; height: 100%; object-fit: contain; }
-.home .clip-toggle { position: absolute; right: 8px; top: 8px; min-width: 44px; min-height: 44px; border: 1px solid var(--g-line);
-    border-radius: 999px; background: rgba(22, 24, 28, .72); color: var(--g-ink); font: 600 13px var(--sans); padding: 0 14px; cursor: pointer; }
-.home .clip-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; margin: 12px 0 0; }
+.home .clip-meta { display: flex; justify-content: space-between; align-items: center; gap: 8px 16px; margin: 12px 0 0; }
+.home .clip-info { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; min-width: 0; }
+.home .clip-toggle { flex: none; min-width: 44px; min-height: 44px; border: 1px solid var(--g-line);
+    border-radius: 999px; background: transparent; color: var(--g-ink); font: 600 13px var(--sans); padding: 0 14px; cursor: pointer; }
+.home .clip-toggle[hidden] { display: none; }
 .home .clip-origin { font-size: 13px; margin: 6px 0 0; }
 .home .actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 16px; }
 .home .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; font-size: 16px; font-weight: 600; text-decoration: none; border: 1px solid transparent; background: var(--g-ink); color: var(--graphit); }

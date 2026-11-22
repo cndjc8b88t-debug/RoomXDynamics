@@ -13,17 +13,21 @@
 {%- endif -%}
 {%- endmacro %}
 
-{% macro clip(hero, lang, labels) -%}
+{% macro clip(hero, lang) -%}
 <div class="clip">
 {%- if hero.clip %}
     <video id="hero-clip" autoplay muted loop playsinline preload="metadata"{% if hero.poster %} poster="{{ hero.poster }}"{% endif %} aria-label="{{ hero.alt }}">
         <source src="{{ hero.clip }}" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
     </video>
-    <button type="button" class="clip-toggle" id="clip-toggle" data-play="{{ labels.play }}" data-pause="{{ labels.pause }}" hidden>{{ labels.pause }}</button>
 {%- elif hero.poster %}
     <img src="{{ hero.poster }}" width="1080" height="1080" alt="{{ hero.posterAlt }}">
 {%- else %}
     <div class="platz" role="img" aria-label="{{ hero.alt }}" style="aspect-ratio: 1">Placeholder hero-{{ lang }} (Mira: A1 clip, A2 still)</div>
 {%- endif %}
 </div>
+{%- endmacro %}
+
+{#- Pause/play button outside the clip, right in the row below it (Larsson 22.11.2026): never over the badge strip -#}
+{% macro clipToggle(hero, labels) -%}
+{%- if hero.clip %}<button type="button" class="clip-toggle" id="clip-toggle" data-play="{{ labels.play }}" data-pause="{{ labels.pause }}" hidden>{{ labels.pause }}</button>{% endif -%}
 {%- endmacro %}

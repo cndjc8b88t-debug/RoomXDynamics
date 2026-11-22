@@ -7,7 +7,7 @@ seoTitle: "RoomXDynamics · Raumluft und Wände als Simulation für iPhone"
 description: "Sieh, wie sich warme und kühle Luft im Raum bewegt und wie kühl die Wände werden, im Modell: eine qualitative Simulation für iPhone."
 bodyClass: home
 ---
-{% from "v2macros.njk" import bild, clip with context %}
+{% from "v2macros.njk" import bild, clip, clipToggle with context %}
 <section class="g hero" aria-labelledby="claim">
 <div class="wrap hero-grid">
     <div class="hero-text">
@@ -19,8 +19,8 @@ bodyClass: home
         <p class="lang-note">Die App gibt es auf Deutsch und Englisch, sie folgt der Sprache deines iPhones.</p>
     </div>
     <div class="hero-media">
-        {{ clip(hero, "de", { play: "Abspielen", pause: "Anhalten" }) }}
-        <p class="clip-meta"><span class="badge">2D-Simulation · qualitativ</span> <span class="legend"><span>kühler</span> <span class="scale" aria-hidden="true"></span> <span>wärmer</span></span></p>
+        {{ clip(hero, "de") }}
+        <div class="clip-meta"><span class="clip-info"><span class="badge">2D-Simulation · qualitativ</span> <span class="legend"><span>kühler</span> <span class="scale" aria-hidden="true"></span> <span>wärmer</span></span></span>{{ clipToggle(hero, { play: "Abspielen", pause: "Anhalten" }) }}</div>
         <p class="clip-origin">Aufnahme aus der App, nicht nachgezeichnet.</p>
     </div>
 </div>
