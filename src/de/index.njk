@@ -63,7 +63,7 @@ description: "Wie sich warme und kühle Luft im Raum bewegt und wie kühl die W�
 })();
 </script>
 
-<p class="store-note">Kostenlos. Noch nicht im App Store erhältlich. Fragen: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+<p class="store-note">Kostenlos. Noch nicht im App Store erhältlich.{% if site.social.length %} Folgen Sie RoomXDynamics auf {% for s in site.social %}<a href="{{ s.url }}">{{ s.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% endif %} Fragen: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
 
 <h2>Ein Vorhang am Fenster?</h2>
 <p>Sehen Sie, wie der Vorhang die Luft am Fenster verändert.</p>
@@ -78,7 +78,7 @@ description: "Wie sich warme und kühle Luft im Raum bewegt und wie kühl die W�
 <p>Jede Ansicht ist ein Schnitt durch einen Raum mit Außenwand und Fenster. Sie ändern ein paar Eingaben und sehen, wie sich das Bild im Modell verändert.</p>
 
 <ul>
-    <li><strong>Luft im Raum.</strong> Ein Heizkörper unter dem Fenster. Die Farben zeigen wärmere und kühlere Luft in groben Abstufungen auf einer festen °C-Skala, die Markierungen zeigen, wie sich die Luft bewegt. Sie wählen Fenster, Wand, Heizkörper-Einstellung, Außentemperatur, Raumgröße und einen Vorhang oder ein Sofa vor dem Fenster.</li>
+    <li><strong>Luft im Raum.</strong> Ein Heizkörper unter dem Fenster. Die Farben zeigen wärmere und kühlere Luft in groben Abstufungen auf einer festen °C-Skala, kurze Striche zeigen, wohin die Luft zieht, warm oder kühl getönt. Sie wählen Fenster, Wand, Heizkörper-Einstellung, Außentemperatur, Raumgröße und einen Vorhang oder ein Sofa vor dem Fenster.</li>
     <li><strong>Kühle Wände und Schimmel.</strong> Die Temperatur der inneren Wandoberfläche und eine Risiko-Einschätzung in drei Stufen mit Bandbreite, für die freie Fläche der Außenwand und in einer Zeile für die Außenkante. Sie wählen Außentemperatur, Raumluftfeuchte und Wand. Eine echte Raumecke ist meist kälter als diese Kante.</li>
 </ul>
 

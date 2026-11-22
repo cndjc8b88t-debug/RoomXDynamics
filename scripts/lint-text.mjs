@@ -18,6 +18,7 @@ const ALLOWED = [
     /on-site measurement/gi, /take measurements\?/gi,
     /ersetzt (keine Messung vor Ort und )?kein Gutachten/gi, /keine Messung/gi, /Messung vor Ort/gi,
     /Ist das eine Messung\?/gi, /kein Gutachten/gi,
+    /What does it cost\?/gi,   // the price question on the FAQ page (Holland 22.11.2026); "cost" stays blocked elsewhere
     /no comfort rating/gi, /keine Komfortbewertung/gi,
     /does not derive statements about draughts/gi,
     /angelehnt an DIN 4108-2/gi, /DIN 4108-2 convention/gi,

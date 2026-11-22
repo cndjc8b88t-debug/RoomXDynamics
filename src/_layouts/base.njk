@@ -34,7 +34,7 @@
     <meta name="twitter:image" content="{{ site.baseUrl }}{{ ogImage or site.ogImage }}">
     <meta name="twitter:image:alt" content="{{ ogImageAlt or site.ogImageAlt }}">
     {% if noindex or site.draft %}<meta name="robots" content="noindex">{% endif %}
-    {% if page.url == "/" %}{% include "jsonld.njk" %}{% endif %}
+    {% if page.url == "/" or page.url == "/de/" %}{% include "jsonld.njk" %}{% endif %}
     <link rel="stylesheet" href="/assets/css/site.css">
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>

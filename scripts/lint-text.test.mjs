@@ -50,6 +50,9 @@ const cases = [
     ["procedure: last minute", { "x/index.html": page({ body: "<p>Averaged over the last minute.</p>" }) }, 1, "procedure term N17"],
     ["procedure: mold threshold", { "x/index.html": page({ body: "<p>The mold threshold.</p>" }) }, 1, "procedure term N18"],
     ["procedure: allowed words", { "x/index.html": page({ body: "<p>2D section, live calculation, calculation core, lower resolution, a recognized reference case from the technical literature, heat conduction. Einfachverglasung, Rechenkern, Auflösung.</p>" }) }, 0, "clean"],
+    // 6 · price question (Holland 22.11.2026): only this fixed phrase, "cost" stays blocked elsewhere
+    ["price question allowed", { "x/index.html": page({ body: '<h2 id="price">What does it cost?</h2><p>RoomXDynamics is free.</p>' }) }, 0, "clean"],
+    ["cost elsewhere blocked", { "x/index.html": page({ body: "<p>Lower heating cost.</p>" }) }, 1, "[text]: cost"],
 ];
 
 let failed = 0;

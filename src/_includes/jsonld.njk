@@ -1,6 +1,7 @@
-{#- Structured data for the home page. No App Store parts yet (no app ID): add downloadUrl,
+{#- Structured data for the home pages (EN "/" and DE "/de/"). No App Store parts yet (no app ID): add downloadUrl,
     offers and the App Store link in sameAs only once the app is listed. sameAs gets the
     Instagram and YouTube profiles once those accounts exist. -#}
+{%- set isDe = (pageLang == "de") -%}
 {%- set ld = {
   "@context": "https://schema.org",
   "@graph": [
@@ -17,7 +18,7 @@
       "@id": site.baseUrl + "/#website",
       "name": site.title,
       "url": site.baseUrl + "/",
-      "inLanguage": "en",
+      "inLanguage": ["en", "de"],
       "publisher": { "@id": site.baseUrl + "/#organization" }
     },
     {
@@ -26,9 +27,10 @@
       "name": site.title,
       "operatingSystem": "iOS",
       "applicationCategory": "LifestyleApplication",
-      "description": "A qualitative simulation of room air and walls for iPhone. It shows a section through a room: how warm and cool air move in the model and how cool the wall surface gets. Not a measurement, not an expert report.",
-      "url": site.baseUrl + "/",
-      "image": site.baseUrl + site.ogImage,
+      "inLanguage": ("de" if isDe else "en"),
+      "description": ("Eine qualitative Simulation von Raumluft und Wänden für iPhone. Sie zeigt einen Schnitt durch einen Raum: wie sich warme und kühle Luft im Modell bewegt und wie kühl die Wandoberfläche wird." if isDe else "A qualitative simulation of room air and walls for iPhone. It shows a section through a room: how warm and cool air move in the model and how cool the wall surface gets."),
+      "url": site.baseUrl + ("/de/" if isDe else "/"),
+      "image": site.baseUrl + ("/assets/img/og-card-de.png" if isDe else site.ogImage),
       "publisher": { "@id": site.baseUrl + "/#organization" }
     }
   ]
