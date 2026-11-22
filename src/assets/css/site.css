@@ -463,3 +463,8 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 .home .more-card:hover { border-color: var(--control); }
 .home .more-card h3 { margin: 0 0 4px; font-size: 18px; }
 .home .more-card p { margin: 0; color: var(--muted); font-size: 15px; }
+/* Navigation in one line on 375 (Larsson § 3): brand left, Method · FAQ · DE | EN right */
+.site-nav { display: flex; align-items: center; flex-wrap: nowrap; white-space: nowrap; }
+.site-nav a { margin-left: 0.4rem; }
+.lang-switch { display: inline-flex; align-items: center; margin-left: 0.4rem; }
+@media (max-width: 399px) { .brand { font-size: 16px; } .site-nav a { font-size: 14px; margin-left: 0; } .lang-switch { margin-left: 2px; } }
