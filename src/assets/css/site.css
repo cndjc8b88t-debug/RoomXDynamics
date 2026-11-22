@@ -423,7 +423,8 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 
 /* 2 · Experiment: pair over the full width, label above the picture */
 .home .pair { display: grid; gap: 24px; margin-top: 32px; }
-.home .pair figcaption { margin: 0 0 8px; }
+.home .pair figure { display: flex; flex-direction: column; }
+.home .pair figcaption { margin: 0 0 8px; flex: 1; }
 @media (min-width: 720px) { .home .pair { grid-template-columns: 1fr 1fr; } }
 .home .pair-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; margin-top: 16px; color: var(--muted); font: 14px/1.4 var(--sans); }
 
