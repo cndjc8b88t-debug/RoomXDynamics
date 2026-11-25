@@ -19,5 +19,11 @@
     "alt": "Recorded in RoomXDynamics: a section through a room with a radiator below the window. The slider moves from “Room” to “Air” and back, and the warm and cool air comes forward in color, in the model.",
     "posterAlt": "Still from RoomXDynamics: a section through a room with a radiator below the window, the slider halfway between “Room” and “Air”, warm and cool air in color, in the model."
   },
-  "social": []
+  "social": [],
+  "appStore": {
+    "id": "6832349433",
+    "slug": "roomxdynamics",
+    "price": "0",
+    "priceCurrency": "EUR"
+  }
 }

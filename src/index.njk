@@ -12,7 +12,7 @@ bodyClass: home
         <h1 id="claim">See what moves a room.</h1>
         <p class="lead">How warm air rises, cool air sinks at the window and how cool the wall gets on the inside. Rearrange the room and watch what happens. Calculated live on your iPhone.</p>
         <p class="actions"><a class="btn" href="#experiment">See the simulation</a> <a class="btn btn-secondary" href="/method/">The physics inside</a></p>
-        <p class="store-note">Free. Not yet available on the App Store.{% if site.social.length %} Follow RoomXDynamics on {% for s in site.social %}<a href="{{ s.url }}">{{ s.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% endif %} Questions: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+        <p class="store-note">{% set ct = "web_hero" %}{% set storeText = "Available on the App Store" %}{% include "store_link.njk" %} Free.{% if site.social.length %} Follow RoomXDynamics on {% for s in site.social %}<a href="{{ s.url }}">{{ s.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% endif %} Questions: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
         <p class="lang-note">The app comes in German and English and follows the language of your iPhone.</p>
     </div>
     <div class="hero-media">

@@ -15,7 +15,7 @@ bodyClass: home
         <h1 id="claim">Sieh, was einen Raum bewegt.</h1>
         <p class="lead">Wie warme Luft aufsteigt, kühle Luft am Fenster absinkt und wie kühl die Wand innen wird. Stell den Raum um und sieh zu, was passiert. Live berechnet auf deinem iPhone.</p>
         <p class="actions"><a class="btn" href="#experiment">Simulation ansehen</a> <a class="btn btn-secondary" href="/de/methode/">Die Physik dahinter</a></p>
-        <p class="store-note">Kostenlos. Noch nicht im App Store erhältlich.{% if site.social.length %} Folge RoomXDynamics auf {% for s in site.social %}<a href="{{ s.url }}">{{ s.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% endif %} Fragen: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
+        <p class="store-note">{% set ct = "web_hero_de" %}{% set storeText = "Im App Store erhältlich" %}{% include "store_link.njk" %} Kostenlos.{% if site.social.length %} Folge RoomXDynamics auf {% for s in site.social %}<a href="{{ s.url }}">{{ s.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% endif %} Fragen: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></p>
         <p class="lang-note">Die App gibt es auf Deutsch und Englisch, sie folgt der Sprache deines iPhones.</p>
     </div>
     <div class="hero-media">

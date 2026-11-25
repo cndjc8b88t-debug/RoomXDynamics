@@ -1,0 +1,3 @@
+{#- App Store link with campaign token. Variant: app icon with text (Tate). Set ct and storeText before including.
+    pt (provider token from App Store Connect) is added only once site.appStore.pt is set. -#}
+<a class="store-link" href="https://apps.apple.com/app/{{ site.appStore.slug }}/id{{ site.appStore.id }}?{% if site.appStore.pt %}pt={{ site.appStore.pt }}&amp;{% endif %}ct={{ ct }}"><img src="/assets/img/icon-512.png" alt="" width="40" height="40"> <span>{{ storeText }}</span></a>

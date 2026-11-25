@@ -9,7 +9,7 @@ bodyClass: legal
 
 # Datenschutzerklärung
 
-*Stand: 22. November 2026*
+*Stand: 25. November 2026*
 
 RoomXDynamics ist eine Raumklima-Simulation für iPhone. Diese Seite erklärt, was mit deinen Daten in der App und auf dieser Website (roomxdynamics.com) geschieht. Beides wird unten getrennt behandelt. Die deutsche und die englische Fassung sind inhaltlich gleich und gleichrangig.
 

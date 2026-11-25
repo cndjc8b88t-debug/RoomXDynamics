@@ -1,6 +1,6 @@
-{#- Structured data for the home pages (EN "/" and DE "/de/"). No App Store parts yet (no app ID): add downloadUrl,
-    offers and the App Store link in sameAs only once the app is listed. sameAs gets the
-    Instagram and YouTube profiles once those accounts exist. -#}
+{#- Structured data for the home pages (EN "/" and DE "/de/"), App Store version: downloadUrl, sameAs and offers
+    (the app is free, price 0). Add Instagram and YouTube to the Organization sameAs once those accounts exist. -#}
+{%- set storeUrl = "https://apps.apple.com/app/" + site.appStore.slug + "/id" + site.appStore.id -%}
 {%- set isDe = (pageLang == "de") -%}
 {%- set ld = {
   "@context": "https://schema.org",
@@ -32,7 +32,10 @@
       "description": ("Eine qualitative Simulation von Raumluft und Wänden für iPhone. Sie zeigt einen Schnitt durch einen Raum: wie sich warme und kühle Luft im Modell bewegt und wie kühl die Wandoberfläche wird." if isDe else "A qualitative simulation of room air and walls for iPhone. It shows a section through a room: how warm and cool air move in the model and how cool the wall surface gets."),
       "url": site.baseUrl + ("/de/" if isDe else "/"),
       "image": site.baseUrl + ("/assets/img/og-card-de.png" if isDe else site.ogImage),
-      "publisher": { "@id": site.baseUrl + "/#organization" }
+      "publisher": { "@id": site.baseUrl + "/#organization" },
+      "downloadUrl": storeUrl,
+      "sameAs": [storeUrl],
+      "offers": { "@type": "Offer", "price": site.appStore.price, "priceCurrency": site.appStore.priceCurrency, "url": storeUrl }
     }
   ]
 } -%}

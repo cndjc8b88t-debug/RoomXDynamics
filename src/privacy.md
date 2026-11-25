@@ -9,7 +9,7 @@ bodyClass: legal
 
 # Privacy Policy
 
-*Last updated: November 22, 2026*
+*Last updated: November 25, 2026*
 
 RoomXDynamics is a room climate simulation for iPhone. This page explains what happens with your data in the app and on this website (roomxdynamics.com). They are handled separately below. The German and English versions have the same content and are equally valid.
 

@@ -34,12 +34,13 @@
     <meta name="twitter:image" content="{{ site.baseUrl }}{{ ogImage or site.ogImage }}">
     <meta name="twitter:image:alt" content="{{ ogImageAlt or site.ogImageAlt }}">
     {% if noindex or site.draft %}<meta name="robots" content="noindex">{% endif %}
+    {% if site.appStore.id %}<meta name="apple-itunes-app" content="app-id={{ site.appStore.id }}">{% endif %}
     {% if page.url == "/" or page.url == "/de/" %}{% include "jsonld.njk" %}{% endif %}
     {% set heroData = hero or site.hero %}{% if bodyClass == "home" and heroData.poster %}<link rel="preload" as="image" href="{{ heroData.poster }}">{% endif %}
     <link rel="stylesheet" href="/assets/css/site.css">
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
-    {% if site.draft %}<div class="draft-banner" role="note">DRAFT · not published · legal texts under review</div>{% endif %}
+    {% if site.draft %}<div class="draft-banner" role="note">DRAFT · not published{% if not site.appStore.id %} · App Store ID missing{% endif %}</div>{% endif %}
     {% if pageLang == "de" %}{% include "header_de.njk" %}{% else %}{% include "header.njk" %}{% endif %}
 
     <main>
